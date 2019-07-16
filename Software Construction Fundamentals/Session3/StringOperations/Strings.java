@@ -25,8 +25,8 @@ public class Strings {
 				greater = secondstring;
 				secondstring = firststring;
 			}
-			for (int i = 0; i < greater.length(); i++) {
-				if (greater.charAt(i) != secondstring.charAt(i)) {
+			for (int index = 0; index < greater.length(); index++) {
+				if (greater.charAt(index) != secondstring.charAt(index)) {
 					return 0;
 				} else {
 					count++;
@@ -48,11 +48,11 @@ public class Strings {
 	 */
 	public static String reverse(String firststring) {
 		String secondstring = "";
-		for (int i = 0; i < firststring.length(); i++) {
-			if (firststring.charAt(i) == ' ') {
+		for (int count = 0; count < firststring.length(); count++) {
+			if (firststring.charAt(count) == ' ') {
 				secondstring = ' ' + secondstring;
 			} else {
-				secondstring = firststring.charAt(i) + secondstring;
+				secondstring = firststring.charAt(count) + secondstring;
 			}
 		}
 		return secondstring;
@@ -69,15 +69,15 @@ public class Strings {
 	 */
 	public static String caseInversion(String firststring) {
 		String secondstring = "";
-		for (int i = 0; i < firststring.length(); i++) {
-			if (firststring.charAt(i) >= 65 && firststring.charAt(i) <= 91) {
+		for (int count = 0; count < firststring.length(); count++) {
+			if (firststring.charAt(count) >= 65 && firststring.charAt(count) <= 91) {
 				secondstring = secondstring
-						+ (char) (firststring.charAt(i) + 32);
-			} else if (firststring.charAt(i) >= 97
-					&& firststring.charAt(i) <= 122) {
+						+ (char) (firststring.charAt(count) + 32);
+			} else if (firststring.charAt(count) >= 97
+					&& firststring.charAt(count) <= 122) {
 				secondstring = secondstring
-						+ (char) (firststring.charAt(i) - 32);
-			} else if (firststring.charAt(i) == ' ') {
+						+ (char) (firststring.charAt(count) - 32);
+			} else if (firststring.charAt(count) == ' ') {
 				secondstring = secondstring + ' ';
 			}
 		}
@@ -98,8 +98,8 @@ public class Strings {
 		String secondstring = "";
 		String greatest = "";
 
-		for (int i = 0; i < firststring.length(); i++) {
-			if (firststring.charAt(i) == ' ') {
+		for (int count = 0; count < firststring.length(); count++) {
+			if (firststring.charAt(count) == ' ') {
 				if (greatest.length() <= secondstring.length()) {
 					greatest = secondstring;
 					secondstring = "";
@@ -108,7 +108,7 @@ public class Strings {
 				}
 			}
 			else {
-				secondstring += firststring.charAt(i);
+				secondstring += firststring.charAt(count);
 			}
 		}
 		if (greatest.length() <= secondstring.length()) {
