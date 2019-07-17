@@ -1,5 +1,5 @@
 public class Item {
-
+	
 	public int product_quantity = 0;
 	public String product_itemname;
 	public double product_price;
@@ -11,7 +11,7 @@ public class Item {
 		product_quantity = 0;
 	}
 	
-	//getter/setter method
+	// getter/setter method
 	public int getProduct_quantity() {
 		return product_quantity;
 	}
@@ -28,5 +28,4 @@ public class Item {
 		return product_price;
 	}
 
-	
-	
+}
