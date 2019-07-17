@@ -4,18 +4,14 @@ public class Item {
 	public String product_itemname;
 	public double product_price;
 
-	/*
-	 * constructor is created of class Item
-	 */
+	//constructor is created of class Item
 	public Item(String itemname, double price) {
 		product_itemname = itemname;
 		product_price = price;
 		product_quantity = 0;
 	}
 	
-	/*
-	 * getter/setter method
-	 */
+	//getter/setter method
 	public int getProduct_quantity() {
 		return product_quantity;
 	}
@@ -34,5 +30,3 @@ public class Item {
 
 	
 	
-
-}
