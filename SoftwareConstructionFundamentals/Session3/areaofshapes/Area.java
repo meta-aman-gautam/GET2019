@@ -2,11 +2,14 @@ package areaofshapes;
 
 import java.util.*;
 
+/**class calcluates the Area of shapes .
+ * 
+ * @author Aman Gautam
+ * Dated 17/07/2019
+ */
 public class Area {
-
-	/*
-	 * MAIN Method 
-	 */
+	
+	// Initialization of MAIN Method 
 	public static void main(String[] args) {
 		
 		int choice;
@@ -29,6 +32,7 @@ public class Area {
 					width =sc.nextDouble();
 					System.out.println(areaofTriangle(height, width));
 					break;
+					//Assuming that Arithmetic Exception may occur.
 				} catch (ArithmeticException e) {
 					System.out.println("You Shouldn't divide a number by zero");
 					break;
@@ -42,6 +46,7 @@ public class Area {
 					width =sc.nextDouble();
 					System.out.println(areaofRectangle(height,width));
 					break;
+					//Assuming that Arithmetic Exception may occur.
 				} catch (ArithmeticException e) {
 					System.out.println("You Shouldn't divide a number by zero");
 					break;
@@ -53,6 +58,7 @@ public class Area {
 					radius = sc.nextDouble();
 					System.out.println(areaofCircle(radius));
 					break;
+					//Assuming that Arithmetic Exception may occur.
 				} catch (ArithmeticException e) {
 					System.out.println("You Shouldn't divide a number by zero");
 					break;
@@ -63,6 +69,7 @@ public class Area {
 					width = sc.nextDouble();
 					System.out.println(areaofSquare(width));
 					break;
+					//Assuming that Arithmetic Exception may occur.
 				} catch (ArithmeticException e) {
 					System.out.println("You Shouldn't divide a number by zero");
 					break;
@@ -133,5 +140,4 @@ public class Area {
 		//precision upto two decimal places.
 		return Math.round(area * 100.0) / 100.0;
 	}
-
 }

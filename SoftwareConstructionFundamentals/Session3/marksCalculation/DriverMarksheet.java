@@ -1,7 +1,13 @@
 package marksCalculation;
 
 import java.util.*;
-
+/**
+ * Driver for class Marksheet
+ * 
+ * @author Aman Gautam
+ * 
+ * Dated - 17/07/2019
+ */
 public class DriverMarksheet {
 
 	public static void main(String[] args) {
@@ -10,9 +16,9 @@ public class DriverMarksheet {
 
 		Scanner sc = new Scanner(System.in);
 
-		
 		Marksheet obj = new Marksheet();
 		obj.input();
+		
 		do {
 			System.out.println("Enter your choice-\n"
 								+ "1- [Average of all grades.]\n" 
@@ -30,7 +36,6 @@ public class DriverMarksheet {
 					System.out.println("You Shouldn't divide a number by zero");
 					break;
 				}
-
 			case 2:
 				try {
 					System.out.println(obj.maximum());
@@ -39,7 +44,6 @@ public class DriverMarksheet {
 					System.out.println("You Shouldn't divide a number by zero");
 					break;
 				}
-
 			case 3:
 				try {
 					System.out.println(obj.minimum());
@@ -47,7 +51,7 @@ public class DriverMarksheet {
 				} catch (ArithmeticException e) {
 					System.out.println("You Shouldn't divide a number by zero");
 					break ;
-				}
+				}	
 			case 4:
 				try {
 					System.out.println(obj.passedPercentage());
@@ -56,18 +60,13 @@ public class DriverMarksheet {
 					System.out.println("You Shouldn't divide a number by zero");
 					break;
 				}
-				
-			
 			case 5:
 				System.exit(0);
-				
 			default:
 				System.out.println("Invalid choice ... please try again");
 				break;
-
 			}
 		} while (choice != 0);
 		sc.close();
 	}
-
 }
