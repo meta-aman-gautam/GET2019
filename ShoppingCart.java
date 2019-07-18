@@ -15,12 +15,9 @@ public class ShoppingCart {
 	static Item scale = new Item("scale", 25.0);
 	static Item notebook = new Item("notebook", 55.5);
 
-	
 	//ArrayLists are for the storing of values
 	static ArrayList<Item> cart = new ArrayList<Item>();
 	static ArrayList<Item> items = new ArrayList<Item>();
-	
-
 	
 	/**
 	 * add method is used to add item to the cart.
@@ -69,10 +66,10 @@ public class ShoppingCart {
 		
 		System.out.println("\nItem Name\t" + "Item Qty\t"+ "Item price(/piece)");
 		System.out.println("==========\t" + "========\t" + "==================");
-		for (Item value : cart) {
-			System.out.println(value.product_itemname + "   \t   "
-							 + value.product_quantity + "   \t   "
-							 + value.product_price);
+		for (Item cartItems : cart) {
+			System.out.println(cartItems.product_itemname + "   \t   "
+					 + cartItems.product_quantity + "   \t   "
+					+ cartItems.product_price);
 		}
 		System.out.println("==========\t" + "========\t" + "==================");
 	}
@@ -89,21 +86,17 @@ public class ShoppingCart {
 							+ "Price");
 		System.out.println("=========\t" + "========\t" + "=============\t"
 							+ "=====");
-		for (Item value : cart) {
-			System.out.println(value.product_itemname + "   \t   "
-							+ value.product_quantity  + "   \t   "
-							+ value.product_price     + "   \t   "
-							+ (value.product_price * value.product_quantity));
+		for (Item cartItems : cart) {
+			System.out.println(cartItems.product_itemname + "   \t   "
+							+ cartItems.product_quantity  + "   \t   "
+							+ cartItems.product_price     + "   \t   "
+							+ (cartItems.product_price * cartItems.product_quantity));
 
 			//calculating total price of the all the products .
-			total = total + (value.product_price * value.product_quantity);
+			total = total + (cartItems.product_price * cartItems.product_quantity);
 		}
-
-		System.out.println("=========\t" 
-							+ "========\t"
-							+ "=============\t"
-							+ "=====");
-
+		System.out.println("=========\t" + "========\t"
+				+ "=============\t"+ "=====");
 		System.out.println("\nTOTAL = " + total + "\n");
 	}
 
@@ -129,9 +122,9 @@ public class ShoppingCart {
 
 		do {
 			System.out.println("[To add item press '1']\n"
-							+ "[To update cart press '2']\n"
-							+ "[To Show Cart press '3']\n"
-							+ "[To generate bill press '4']");
+					+ "[To update cart press '2']\n"
+					+ "[To Show Cart press '3']\n"
+					+ "[To generate bill press '4']");
 			
 			menu = sc.nextInt();
 			
