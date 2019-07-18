@@ -69,8 +69,7 @@ public class JobScheduling {
 		System.out.println("Start Time\t" + "Arrival Time\t" + "Burst Time\t" 
 							+ "Completion Time \t" + "TurnAround Time\t" + " Waiting Time\t");
 		System.out.println("----------\t" + "------------\t" + "----------\t"
-							+ "----------------\t" + "---------------\t"
-							+ "-------------\t");
+				+ "----------------\t" + "---------------\t"+ "-------------\t");
 		
 		for (int i = 0; i < processes; i++) {
 			System.out.println("\t" + startTime[i] + "\t\t" + inputArray[i][0]
