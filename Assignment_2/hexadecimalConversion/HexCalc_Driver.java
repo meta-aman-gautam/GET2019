@@ -10,45 +10,37 @@ import java.util.Scanner;
  * dated 15/07/2019
  */
 public class HexCalc_Driver {
-
+	
+	//Initialization of main method
 	public static void main(String[] args) {
-
-		
 		/*
-		 * firstnumber {String} 
-		 * secondnumber{String} 
-		 * hexnumber{String} is used to get hexadecimal no as an input.
+		 * First Number {String} 
+		 * Second Number{String} 
+		 * HexNumber{String} is used to get hexadecimal no as an input.
 		 */
-		int choice, choice1, choice3, decimalnumber;
-		String hexnumber, firstnumber, secondnumber;
+		int choice, choice1, choice3, DecimalNumber;
+		String HexNumber, FirstNumber, SecondNumber;
 		
-
 		Scanner sc = new Scanner(System.in);
-
-		/*
-		 * object of HexCalc class is created in order to access its methods
-		 */
+	
+		//object of HexCalc class is created in order to access its methods
 		HexCalc obj = new HexCalc();
-
 		
-		System.out.println("[1 - For Arithmetic operations (Add/Sub/Multiply/Divide)\n"
+		System.out.println("[1 - For Arthmetic operations (Add/Sub/Multiply/Divide)\n"
 						+ "[2 - For comparing Strings ('==','<','>') ]\n"
 						+ "[3 - For Decimal to Hexadecimal conversion ]\n"
 						+ "[4 - For Hexadecimal to Decimal conversion ]");
 
-		
 		do {
 			System.out.println("\nEnter your choice from above");
 			choice = sc.nextInt();
 			switch (choice) {
 
-			
 		   /*
 			* case 1 - For Arithmetic operations such as(Add/Sub/Multiply/Divide)
-			
 			* result will come in HEXADECIMAL format for every operation .
 			*/
-			case 1: {
+			case 1: 
 				System.out.println("1 - Addition\n"
 								+ "2 - Subtraction\n"
 								+ "3 - Multiplication\n"
@@ -66,21 +58,18 @@ public class HexCalc_Driver {
 					System.out.println("Invalid choice");
 				}
 				break;
-			}
-
-			
 			
 			/*
 			 * CASE 2 - For two HEXADECIMAL no. COMPARISON such "==" , ">" or "<" .
 			 * 
 			 * return value{boolean};
 			 */
-			case 2: {
+			case 2: 
 				System.out.println("Enter two hexadecimal nos.");
 				System.out.print("first no -");
-				firstnumber = sc.next();
+				FirstNumber = sc.next();
 				System.out.print("second no - ");
-				secondnumber = sc.next();
+				SecondNumber = sc.next();
 				System.out.println("choose:\n"+
 								"'1' checks first no. == second no.\n"   +
 								"'2' for checks first no. > second no.\n"+
@@ -88,31 +77,28 @@ public class HexCalc_Driver {
 				
 				choice3 = sc.nextInt();
 				if (choice3 == 1) {
-					System.out.println(obj.isEqual(firstnumber, secondnumber));
+					System.out.println(obj.isEqual(FirstNumber, SecondNumber));
 				}
 				if (choice3 == 2) {
-					System.out.println(obj.isGreater(firstnumber, secondnumber));
+					System.out.println(obj.isGreater(FirstNumber, SecondNumber));
 				}
 				if (choice3 == 3) {
-					System.out.println(obj.isSmaller(firstnumber, secondnumber));
+					System.out.println(obj.isSmaller(FirstNumber, SecondNumber));
 				}
 				break;
-			}
 
 			/*
 			 * CASE 3 - For Conversion of DECIMAL no to HEXADECIMAL no .
 			 *
-			 * decimalnumber is input
+			 * Decimal number is input
 			 * 
 			 * Hexadecimal number is return value
 			 */
-			case 3: {
-
+			case 3: 
 				System.out.println("Enter the DECIMAL no.  ");
-				decimalnumber = sc.nextInt();
-				System.out.println("Hexadecimal Equivalent = " + obj.getHex(decimalnumber));
+				DecimalNumber = sc.nextInt();
+				System.out.println("Hexadecimal Equivalent = " + obj.getHex(DecimalNumber));
 				break;
-			}
 
 			/*
 			 * CASE 4 - For Conversion of HEXADECIMAL no. to DECIMAL no .
@@ -122,14 +108,12 @@ public class HexCalc_Driver {
 			 */
 			case 4: {
 				System.out.println("Enter the HEXADECIMAL no.  ");
-				hexnumber= sc.next();
-				System.out.println("Decimal Equivalent = " + obj.getDecimal(hexnumber));
+				HexNumber= sc.next();
+				System.out.println("Decimal Equivalent = " + obj.getDecimal(HexNumber));
 				break;
-
 			}
 			default: {
 				System.out.println("INVALID CHOICE --- Please try Again .");
-
 				break;
 			}
 			}
