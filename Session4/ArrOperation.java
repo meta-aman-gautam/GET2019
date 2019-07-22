@@ -47,23 +47,24 @@ public class ArrOperation{
 	 * @param inputarray[]
 	 * @return clumps
 	 */
-	 static int noofClumps(int[] inputarray) {
-		int clumps = 0, LastIndex;
-		boolean CheckingStatus;
+	 static int testNoOfClumps_WithExpectedOutput(int[] inputarray) {
+		int clumps = 0, firstIndex,lastIndex;
+		boolean checkingStatus;
 
 		if (inputarray.length == 0)
 			throw new AssertionError("Array size cannot be zero");
-		for (int FirstIndex = 0; FirstIndex < inputarray.length; FirstIndex++) {
-			CheckingStatus = false;
-			for (LastIndex = 1; (LastIndex + FirstIndex) < inputarray.length; LastIndex++) {
-				if (inputarray[FirstIndex] == inputarray[LastIndex + FirstIndex]) {
-					CheckingStatus = true;
-				} else
+		for (int firstIndex = 0; firstIndex < inputarray.length; firstIndex++) {
+			checkingStatus = false;
+			for (lastIndex = 1; (lastIndex + firstIndex) < inputarray.length; lastIndex++) {
+				if (inputarray[firstIndex] == inputarray[lastIndex + firstIndex]) {
+					checkingStatus = true;
+				} else{
 					break;
+				}	
 			}
 			if (CheckingStatus) {
 				clumps++;
-				FirstIndex = FirstIndex + LastIndex - 1;
+				firstIndex = firstIndex + lastIndex - 1;
 			}
 		}
 		System.out.println(clumps);
