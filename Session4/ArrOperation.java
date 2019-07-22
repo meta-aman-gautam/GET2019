@@ -47,7 +47,7 @@ public class ArrOperation{
 	 * @param inputarray[]
 	 * @return clumps
 	 */
-	 static int testNoOfClumps_WithExpectedOutput(int[] inputarray) {
+	 public int testNoOfClumps(int[] inputarray) {
 		int clumps = 0, firstIndex,lastIndex;
 		boolean checkingStatus;
 
@@ -71,8 +71,7 @@ public class ArrOperation{
 		return clumps;
 	}
 
-	
-	static boolean checkadjecency(int[] inputarray ,int X) {
+	public boolean checkadjecency(int[] inputarray ,int X) {
 		for(int count=0;count<inputarray.length-1;count++)
 		{
 			if(inputarray[count]==X && inputarray[count+1]==X) {
@@ -82,13 +81,13 @@ public class ArrOperation{
 		return false;
 	}
 	
-	static int countOf_XorY(int[] inputArray, int X) {
-		int countOf = 0;
+	public int countOf_XorY(int[] inputArray, int X) {
+		int countValue = 0;
 		for (int count = 0; count < inputArray.length; count++) {
 			if (inputArray[count] == X)
-				countOf++;
+				countValue++;
 		}
-		return countOf;
+		return countValue;
 	}
 	
 	/*
@@ -136,7 +135,6 @@ public class ArrOperation{
 		return inputarray ;
 	}
 
-	
 	/*
 	 * Return the index if there is a place to split the input array so
 	 *  that the sum of the numbers on one side is equal to the sum 
