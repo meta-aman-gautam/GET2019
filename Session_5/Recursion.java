@@ -23,8 +23,9 @@ public class Recursion {
 	
 	public int hcf(int divisor, int dividend){
 		remainder = dividend%divisor ;
-		if(remainder==0)
+		if(remainder==0){
 			value= divisor ;
+		}
 		else {
 			dividend = divisor;
 			divisor =remainder ;
