@@ -2,10 +2,6 @@ public class Nqueen {
 
 	int[][] chessBoard;
 
-	public Nqueen() {
-
-	}
-
 	/**
 	 * Checks that the specified position is safe or not for placing Queen
 	 * 
@@ -20,20 +16,20 @@ public class Nqueen {
 			int dimensionOfChessBoard) {
 		chessBoard = board;
 		// check if Queen is present in same column
-		for (int i = 0; i < row; i++) {
-			if (chessBoard[i][column] == 1) {
+		for (int count_row = 0; count_row < row; count_row++) {
+			if (chessBoard[count_row][column] == 1) {
 				return false;
 			}
 		}
 		// check if Queen is present in upper left diagonal
-		for (int i = row, j = column; i >= 0 && j >= 0; i--, j--) {
-			if (chessBoard[i][j] == 1) {
+		for (int count_row = row, count_col = column; count_row >= 0 && count_col >= 0; count_row--, count_col--) {
+			if (chessBoard[count_row][count_col] == 1) {
 				return false;
 			}
 		}
 		// check if Queen is present in upper right diagonal
-		for (int i = row, j = column; i >= 0 && j < dimensionOfChessBoard; i--, j++) {
-			if (chessBoard[i][j] == 1) {
+		for (int count_row = row, count_col = column; count_row >= 0 && count_col < dimensionOfChessBoard; count_row--, count_col++) {
+			if (chessBoard[count_row][count_col] == 1) {
 				return false;
 			}
 		}
@@ -41,7 +37,7 @@ public class Nqueen {
 	}
 
 	/**
-	 * The N Queen is the problem of placing N chess queens on an N×N chess
+	 * The N Queen is the problem of placing N chess queens on an NÃ—N chess
 	 * board so that no two queens attack each other.
 	 * 
 	 * @param board
@@ -55,9 +51,9 @@ public class Nqueen {
 		chessBoard = board;
 		if (startRow >= dimensionOfChessBoard) {
 			// print final queen location
-			for (int i = 0; i < dimensionOfChessBoard; i++) {
-				for (int j = 0; j < dimensionOfChessBoard; j++) {
-					System.out.print(chessBoard[i][j] + " ");
+			for (int count_row = 0; count_row < dimensionOfChessBoard; count_row++) {
+				for (int count_col = 0; count_col < dimensionOfChessBoard; count_col++) {
+					System.out.print(chessBoard[count_row][count_col] + " ");
 				}
 				System.out.print("\n");
 			}
@@ -65,16 +61,15 @@ public class Nqueen {
 			return true;
 
 		}
-		for (int i = 0; i < dimensionOfChessBoard; i++) {
-			if (isSafe(chessBoard, startRow, i, dimensionOfChessBoard)) {
-				chessBoard[startRow][i] = 1;
+		for (int count_row = 0; count_row < dimensionOfChessBoard; count_row++) {
+			if (isSafe(chessBoard, startRow, count_row, dimensionOfChessBoard)) {
+				chessBoard[startRow][count_row] = 1;
 				if (nQueen(chessBoard, startRow + 1, dimensionOfChessBoard)) {
 					return true;
 				}
-				chessBoard[startRow][i] = 0;
+				chessBoard[startRow][count_row] = 0;
 			}
 		}
 		return false;
 	}
-
 }
