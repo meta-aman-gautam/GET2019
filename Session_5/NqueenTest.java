@@ -13,15 +13,15 @@ public class NqueenTest {
 	Nqueen solve = new Nqueen();
 	
 	private int[][] inputArray2;
-	private boolean A;
+	private boolean Answer;
 	private int startRow;
 	private int dimensionOfChessBoard;
 	
-	public NqueenTest(boolean A, int [][]inputArray2 ,int startRow,int dimensionOfChessBoard) {
+	public NqueenTest(boolean Answer, int [][]inputArray2 ,int startRow,int dimensionOfChessBoard) {
 		
 		this.inputArray2 = inputArray2;
 		this.startRow =startRow;
-		this.A =A;
+		this.Answer =Answer;
 		this.dimensionOfChessBoard = dimensionOfChessBoard;
 	}
 	
@@ -38,6 +38,6 @@ public class NqueenTest {
 	
 	@Test  //Nqueen Problem
 	public void nQueenProblemTest() {
-		assertEquals(A, solve.nQueen(new int[][] {{0,0,0},{0,0,0},{0,0,0}},0,3));
+		assertEquals(Answer, solve.nQueen(new int[][] {{0,0,0},{0,0,0},{0,0,0}},0,3));
 	}
 }
