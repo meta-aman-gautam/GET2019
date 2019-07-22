@@ -143,7 +143,7 @@ public class ArrOperation{
 	 *  of the numbers on the other side else return -1 .
 	 */
 	static int split(int splitArray[]) {
-		int ReturnValue ,index ;
+		int returnValue ,index ;
 		
 		if (splitArray.length == 0)
 			throw new AssertionError("Array size cannot be zero");
@@ -153,23 +153,23 @@ public class ArrOperation{
 			sum += splitArray[count];
 		}
 		if (sum % 2 != 0){
-			ReturnValue =-1;
-			return ReturnValue;
+			returnValue =-1;
+			return returnValue;
 	    	}
 	
 		for (index = splitArray.length - 1; index > 0; index--) {
 			rightSum += splitArray[index];
 			leftSum = sum - rightSum;
 			if (leftSum == rightSum) {
-				ReturnValue= index;
-				return ReturnValue;
+				returnValue= index;
+				return returnValue;
 			}
 		}
 		if (index == 0){
-			ReturnValue = -1;
-			return ReturnValue;
+			returnValue = -1;
+			return returnValue;
 		}
-		ReturnValue =-1;
-		return ReturnValue;
+		returnValue =-1;
+		return returnValue;
 	}
 }
