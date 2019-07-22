@@ -2,6 +2,7 @@ public class Nqueen {
 
 	int[][] chessBoard;
 
+
 	/**
 	 * Checks that the specified position is safe or not for placing Queen
 	 * 
@@ -13,50 +14,34 @@ public class Nqueen {
 	 * @return returns true if specified position is safe or false if specified position is not safe
 	 */
 	public boolean isSafe(int[][] board, int row, int column,int dimensionOfChessBoard) {
-		boolean answer;
+		boolean answer = true;
 		chessBoard = board;
 		// check if Queen is present in same column
 		for (int count_row = 0; count_row < row; count_row++) {
 			if (chessBoard[count_row][column] == 1) {
-				answer =false ;
-				break;
-			}
-			else{
-				answer =true;
-				break;
+				answer = false;
 			}
 		}
 		// check if Queen is present in upper left diagonal
 		for (int count_row = row, count_col = column; count_row >= 0 && count_col >= 0; count_row--, count_col--) {
 			if (chessBoard[count_row][count_col] == 1) {
-				answer =false ;
-				break ;
-			}
-			else{
-				answer =true;
-				break;
+				answer =false;
 			}
 		}
 		// check if Queen is present in upper right diagonal
 		for (int count_row = row, count_col = column; count_row >= 0 && count_col < dimensionOfChessBoard; count_row--, count_col++) {
 			if (chessBoard[count_row][count_col] == 1) {
-				answer =false ;
-				break ;
-			}
-			else{
-				answer =true;
-				break;
+				answer =false;
 			}
 		}
 		return answer;
 	}
 
 	/**
-	 * The N Queen is the problem of placing N chess queens on an NÃ—N chess
+	 * The N Queen is the problem of placing N chess queens on an N×N chess
 	 * board so that no two queens attack each other.
 	 * 
-	 * @param board
-	 *            board all elements of board are initially initialized to zero
+	 * @param board all elements of board are initially initialized to zero
 	 * @param startRow
 	 * @param dimensionOfChessBoard
 	 * @return
@@ -87,4 +72,5 @@ public class Nqueen {
 		}
 		return false;
 	}
+
 }

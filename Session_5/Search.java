@@ -1,4 +1,10 @@
-
+/**
+ * Search for the element in the input Array Using linear or binary search
+ * for binary search we assume the input array is sorted 
+ * 
+ * @author Aman Gautam
+ * Dated 22/07/2019
+ */
 public class Search {
 
 	private int index, count = 0,start,last,mid ,value=0;
@@ -13,33 +19,41 @@ public class Search {
 			}
 			else if(inputarray[0]==element) {
 				index = 0;
-				
-			} else{
+			}
+			else{
 				linearSearch(inputarray, element);
 			}
 		}
 		return index;
 	}
 	
+	/*
+	 * Binary search method
+	 */
 	public int binarySearch(int inputArray[],int element){
 		if(inputArray.length==0 )
 			throw new AssertionError("Array empty");
-		int start=0 ,end=inputArray.length ,index=binarySearchRecorsive(inputArray,start,end,element);
+		int start=0;
+		int end=inputArray.length;
+		int index=binarySearchRecursive(inputArray,start,end,element);
+		
 		return index;
 		}
-
-	public static int binarySearchRecorsive(int inputArray[], int startIndex,int arrayLength, int element) {
+	
+	/*
+	 * helper method for the Binary Search 
+	 */
+	public static int binarySearchRecursive(int inputArray[], int startIndex,int arrayLength, int element) {
 		if (arrayLength >= startIndex) {
-			answer = 0;
 			int mid = startIndex + (arrayLength - startIndex) / 2;
-			if (inputArray[mid] == element){
-				answer = mid;
-			}
-			else if (inputArray[mid] > element){
-				answer = binarySearchRecorsive(inputArray, startIndex, mid - 1,element);
-			}
-			answer = binarySearchRecorsive(inputArray, mid + 1, arrayLength,element);
+			if (inputArray[mid] == element)
+				return mid;
+			else if (inputArray[mid] > element)
+				//calling recursion
+				return binarySearchRecursive(inputArray, startIndex, mid - 1,element);
+			return binarySearchRecursive(inputArray, mid + 1, arrayLength,element);
 		}
-		return answer ;
+		return -1;
 	}
 }
+
