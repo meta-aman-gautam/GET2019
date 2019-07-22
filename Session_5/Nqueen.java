@@ -12,28 +12,32 @@ public class Nqueen {
 	 * @param dimensionOfChessBoard
 	 * @return returns true if specified position is safe or false if specified position is not safe
 	 */
-	public boolean isSafe(int[][] board, int row, int column,
-			int dimensionOfChessBoard) {
+	public boolean isSafe(int[][] board, int row, int column,int dimensionOfChessBoard) {
+		boolean answer;
 		chessBoard = board;
 		// check if Queen is present in same column
 		for (int count_row = 0; count_row < row; count_row++) {
 			if (chessBoard[count_row][column] == 1) {
-				return false;
+				answer =false ;
+				return answer;
 			}
 		}
 		// check if Queen is present in upper left diagonal
 		for (int count_row = row, count_col = column; count_row >= 0 && count_col >= 0; count_row--, count_col--) {
 			if (chessBoard[count_row][count_col] == 1) {
-				return false;
+				answer =false ;
+				return answer;
 			}
 		}
 		// check if Queen is present in upper right diagonal
 		for (int count_row = row, count_col = column; count_row >= 0 && count_col < dimensionOfChessBoard; count_row--, count_col++) {
 			if (chessBoard[count_row][count_col] == 1) {
-				return false;
+				answer =false ;
+				return answer;
 			}
 		}
-		return true;
+		answer =true ;
+		return answer;
 	}
 
 	/**
