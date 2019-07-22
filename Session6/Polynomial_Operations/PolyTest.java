@@ -13,7 +13,7 @@ import org.junit.runners.Parameterized;
 
 @RunWith(Parameterized.class)
 public class PolyTest {
-
+	
 	public Poly Poly =new Poly();
 
 	private int input;
@@ -30,10 +30,8 @@ public class PolyTest {
 	private Poly mul2 =new Poly();
 	
 	
-	public PolyTest(int expectedValue, int input,
-					float value ,float evaluatedValue ,
-					Poly add1,Poly add2 , String evaluatedValueAdd,
-					Poly mul1,Poly mul2, String evaluatedValueMultiply ) {
+	public PolyTest(int expectedValue, int input, float value ,float evaluatedValue ,
+			Poly add1,Poly add2 , String evaluatedValueAdd,Poly mul1,Poly mul2, String evaluatedValueMultiply ) {
 
 		// is test of degree
 		this.input = input;
@@ -54,15 +52,17 @@ public class PolyTest {
 		this.mul2 =mul2;
 	}
 
-
 	@Parameterized.Parameters
 	public static Collection data() {
 		return Arrays.asList(new Object[][] { 
-			{   new Poly(new int[] { 6, 5, 2 }).degree(), 2,
-				new Poly(new int []{1,2,4}).evaluate(2) ,21.0 ,
-				new Poly(new int[]{ 6, 4, 2 }),new Poly(new int[]{ 6,0, 4, 2 }),"[12, 4, 6, 2]",
-				new Poly(new int[]{ 5, 0, 10, 6 }),new Poly(new int[]{ 1, 2, 4 }), "[5, 10, 30, 26, 52, 24]"}	
-
+			{  new Poly(new int[] { 6, 5, 2 }).degree(), 2,
+			   new Poly(new int []{1,2,4}).evaluate(2) ,21.0 ,
+			   new Poly(new int[]{ 6, 4, 2 }),new Poly(new int[]{ 6,0, 4, 2 }),"[12, 4, 6, 2]",
+			   new Poly(new int[]{ 5, 0, 10, 6 }),new Poly(new int[]{ 1, 2, 4 }), "[5, 10, 30, 26, 52, 24]"},	
+			{  new Poly(new int[] { 1, 1, 2 }).degree(), 2,
+			   new Poly(new int []{1,7,3}).evaluate(2) ,78.0 ,
+			   new Poly(new int[]{ 1, 2, 2 }),new Poly(new int[]{ 6,0, 4, 2 }),"[6, 4, 12 ]",
+			   new Poly(new int[]{ 5, 10, 6 }),new Poly(new int[]{ 1, 2, 4 }), "[5, 10, 26, 52, 24]"}
 		});
 	}
 	
