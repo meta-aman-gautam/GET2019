@@ -2,7 +2,6 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-
 public class ArrOperationTest {
 
 	private int[] inputArray;
@@ -29,19 +28,19 @@ public class ArrOperationTest {
 		
 	
 	@Test
-	public void noofClumpsTest1() {
+	public void testNoOfClumps_WithExpectedOutput1() {
 		int []inputArray= {1,2,2,3,4,4};
-		assertEquals(2,obj.noofClumps(inputArray));  
+		assertEquals(2,obj.testNoOfClumps_WithExpectedOutput(inputArray));  
 	}
 	@Test
-	public void noofClumpsTest2() {
+	public void testNoOfClumps_WithExpectedOutput2() {
 		int []inputArray= {2,1,1,1,2};
-		assertEquals(1,obj.noofClumps(inputArray));  
+		assertEquals(1,obj.testNoOfClumps_WithExpectedOutput(inputArray));  
 	}
 	@Test
-	public void noofClumpsTest3() {
+	public void testNoOfClumps_WithExpectedOutput3() {
 		int []inputArray= {1,1,2,2,2,1,1};
-		assertEquals(3,obj.noofClumps(inputArray));
+		assertEquals(3,obj.testNoOfClumps_WithExpectedOutput(inputArray));
 	}
 	
 	
@@ -83,8 +82,4 @@ public class ArrOperationTest {
 		int []inputArray = { 10,10 };
 		assertEquals(1, obj.split(inputArray));    
 	}
-	
-	
-	
-
 }
