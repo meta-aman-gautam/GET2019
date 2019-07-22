@@ -4,7 +4,6 @@ public class Recursion {
 	private int value =1;
 	private int remainder =-1;
 	
-	
 	public int lcm(int a,int b) {
 		int min =Math.min(a, b);
 		int max =Math.max(a, b);
@@ -30,9 +29,7 @@ public class Recursion {
 			dividend = divisor;
 			divisor =remainder ;
 			hcf(divisor ,dividend);
-		}
-			
+		}	
 		return value;		
 	}
-
 }
