@@ -17,9 +17,8 @@ public class ArrOperation{
 		if (mirrorArray.length == 0)
 			throw new AssertionError("Array size cannot be zero");
 
-		int maxLength = 0;
-		int tempLength = 0;
-		int pivot;
+		int maxLength = 0,tempLength = 0,pivot;
+		
 		for (int indexI = 0; indexI < mirrorArray.length; indexI++) {
 			pivot = indexI;
 			tempLength = 0;
@@ -82,24 +81,14 @@ public class ArrOperation{
 		return false;
 	}
 	
-	static int countOfX(int[] inputArray, int X) {
-		int countX = 0;
+	static int countOf_XorY(int[] inputArray, int X) {
+		int countOf = 0;
 		for (int count = 0; count < inputArray.length; count++) {
 			if (inputArray[count] == X)
-				countX++;
+				countOf++;
 		}
-		return countX;
+		return countOf;
 	}
-	
-	static int countOfY(int[] inputArray, int Y) {
-		int countY = 0;
-		for (int count = 0; count < inputArray.length; count++) {
-			if (inputArray[count] == Y)
-				countY++;
-		}
-		return countY;
-	}
-	
 	
 	/*
 	 *Return an array that contains exactly the same numbers as the input array,
@@ -116,7 +105,7 @@ public class ArrOperation{
 		else if(checkadjecency(inputarray, X))
 			throw new AssertionError("Array should not contain adjacent X");
 		//Assertion error case 3 ...	
-		else if(countOfX(inputarray, X)!=countOfY(inputarray, Y))
+		else if(countOf_XorY(inputarray, X)!=countOf_XorY(inputarray, X))
 			throw new AssertionError("Array should contain equal Xs and Ys");
 		//Assertion error case 4 ...
 		else if(inputarray[inputarray.length-1] == X)
@@ -153,20 +142,20 @@ public class ArrOperation{
 	 *  of the numbers on the other side else return -1 .
 	 */
 	static int split(int splitArray[]) {
-		int ReturnValue ;
+		int ReturnValue ,index ;
 		
 		if (splitArray.length == 0)
 			throw new AssertionError("Array size cannot be zero");
 		
 		int sum = 0, leftSum = 0, rightSum = 0;
-		for (int i = 0; i < splitArray.length; i++) {
-			sum += splitArray[i];
+		for (int count = 0; count < splitArray.length; count++) {
+			sum += splitArray[count];
 		}
 		if (sum % 2 != 0){
 			ReturnValue =-1;
 			return ReturnValue;
-	    }
-		int index;
+	    	}
+	
 		for (index = splitArray.length - 1; index > 0; index--) {
 			rightSum += splitArray[index];
 			leftSum = sum - rightSum;
