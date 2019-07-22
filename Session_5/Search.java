@@ -10,36 +10,36 @@ public class Search {
 			count++;
 			if (inputarray[(inputarray.length - 1) - count] == element && ((inputarray.length - 1) - count) != 0) {
 				index = (inputarray.length - 1) - count;
-				return index;
 			}
 			else if(inputarray[0]==element) {
 				index = 0;
 				
-			} else
+			} else{
 				linearSearch(inputarray, element);
+			}
 		}
 		return index;
 	}
 	
 	public int binarySearch(int inputArray[],int element){
 		if(inputArray.length==0 )
-		throw new AssertionError("Array empty");
-		int start=0;
-		int end=inputArray.length;
-		int index=binarySearchRecorsive(inputArray,start,end,element);
+			throw new AssertionError("Array empty");
+		int start=0 ,end=inputArray.length ,index=binarySearchRecorsive(inputArray,start,end,element);
 		return index;
 		}
 
 	public static int binarySearchRecorsive(int inputArray[], int startIndex,int arrayLength, int element) {
 		if (arrayLength >= startIndex) {
+			answer = 0;
 			int mid = startIndex + (arrayLength - startIndex) / 2;
-			if (inputArray[mid] == element)
-				return mid;
-			if (inputArray[mid] > element)
-				return binarySearchRecorsive(inputArray, startIndex, mid - 1,
-						element);
-			return binarySearchRecorsive(inputArray, mid + 1, arrayLength,element);
+			if (inputArray[mid] == element){
+				answer = mid;
+			}
+			else if (inputArray[mid] > element){
+				answer = binarySearchRecorsive(inputArray, startIndex, mid - 1,element);
+			}
+			answer = binarySearchRecorsive(inputArray, mid + 1, arrayLength,element);
 		}
-		return -1;
+		return answer ;
 	}
 }
