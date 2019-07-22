@@ -19,24 +19,35 @@ public class Nqueen {
 		for (int count_row = 0; count_row < row; count_row++) {
 			if (chessBoard[count_row][column] == 1) {
 				answer =false ;
-				return answer;
+				break;
+			}
+			else{
+				answer =true;
+				break;
 			}
 		}
 		// check if Queen is present in upper left diagonal
 		for (int count_row = row, count_col = column; count_row >= 0 && count_col >= 0; count_row--, count_col--) {
 			if (chessBoard[count_row][count_col] == 1) {
 				answer =false ;
-				return answer;
+				break ;
+			}
+			else{
+				answer =true;
+				break;
 			}
 		}
 		// check if Queen is present in upper right diagonal
 		for (int count_row = row, count_col = column; count_row >= 0 && count_col < dimensionOfChessBoard; count_row--, count_col++) {
 			if (chessBoard[count_row][count_col] == 1) {
 				answer =false ;
-				return answer;
+				break ;
+			}
+			else{
+				answer =true;
+				break;
 			}
 		}
-		answer =true ;
 		return answer;
 	}
 
