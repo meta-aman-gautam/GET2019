@@ -1,7 +1,5 @@
 package Polynomial_Operations;
 
-package immutable_Polynomial;
-
 import static org.junit.Assert.*;
 import java.util.Arrays;
 import java.util.Collection;
@@ -81,3 +79,4 @@ public class PolyTest {
 		assertEquals(evaluatedValueMultiply,Poly.mul(mul1, mul2));
 	}
 }
+
