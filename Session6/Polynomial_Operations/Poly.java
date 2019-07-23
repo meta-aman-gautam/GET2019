@@ -2,41 +2,44 @@ package Polynomial_Operations;
 
 import java.util.Arrays;
 
-public class Poly {
+/**Poly Immutable class is performing operations on Polynomial provided by user ,
+ * such as Evaluation ,degree of polynomial ,addition and multiplication 
+ * 
+ * @author Aman Gautam
+ * 
+ * Dated 22/07/2019
+ */
+public final class Poly {    //immutable 
 
-	public int[] polynomial;
-
+	final int[] polynomial;
 	/**
-	 * Poly() is a constructor of class Poly for initialising input polynimial
+	 * Poly() is a constructor of class Poly for initializing input polynomial
 	 * 
 	 * @param inputPolynomial is input polynomial from user
 	 */
-	public Poly(int[] inputPolynomial) {
+	Poly(int[] inputPolynomial) {
 		polynomial = inputPolynomial;
 		if (polynomial.length == 0)
-			throw new AssertionError("Array empty");
+			//Assertion error is 
+			throw new AssertionError("Array cannot be empty");
 	}
-
-	public Poly() {
+	
+	Poly() {
 		// default constructor for Poly
 	}
-
-
 
 	/**
 	 * evaluate takes in value of variable in polynomial and calculates the
 	 * value of the polynomial
 	 * 
-	 * @param value
-	 *            is input value for variable
+	 * @param value is input value for variable
 	 * @return evaluatedValue is the evaluated value of the polynomial
 	 */
-	public float evaluate(int value) {
+	public float evaluate(float value) {
 		float evaluatedValue = 0;
 		for (int count = 0; count < polynomial.length; count++) {
 			evaluatedValue += polynomial[count] * (Math.pow(value, count));
 		}
-		System.out.println("evaluated->"+evaluatedValue);
 		return evaluatedValue;
 	}
 
@@ -46,14 +49,13 @@ public class Poly {
 	 * @return length is highest degree of polynomial
 	 */
 	public int degree() {
-
 		int length = polynomial.length - 1;
+		
 		while (polynomial[length] == 0) {
 			if (length == 0)
 				break;
 			length--;
 		}
-		System.out.println("->"+length);
 		return length;
 	}
 
@@ -61,10 +63,8 @@ public class Poly {
 	 * add accepts two objects of Poly class and returns the sum of two
 	 * polynomials
 	 * 
-	 * @param value1
-	 *            is first Polynomial
-	 * @param value2
-	 *            is second polynomial
+	 * @param value1 is first Polynomial
+	 * @param value2 is second polynomial
 	 */
 	public String add(Poly value1, Poly value2) {
 		int length1 = value1.polynomial.length, length2 = value2.polynomial.length;
@@ -84,7 +84,6 @@ public class Poly {
 			}
 		}
 		retString = Arrays.toString(sumList);
-		System.out.println(retString);
 		return retString;
 	}
 
@@ -92,17 +91,15 @@ public class Poly {
 	 * mul accepts two objects of Poly class and returns the multiplication of
 	 * two polynomials
 	 * 
-	 * @param value1
-	 *            is first Polynomial
-	 * @param value2
-	 *            is second polynomial
+	 * @param value1 is first Polynomial
+	 * @param value2 is second polynomial
 	 * @return String value of polynomial
 	 */
 	public String mul(Poly value1, Poly value2) {
+		String retString;
 		int length1 = value1.polynomial.length;
 		int length2 = value2.polynomial.length;
 		int mulList[] = new int[length1 + length2 - 1];
-		String retString = null;
 
 		for (int count_i = 0; count_i < length1; count_i++) {
 			/*
@@ -114,8 +111,7 @@ public class Poly {
 			}
 		}
 		retString = Arrays.toString(mulList);
-
 		return retString;
 	}
-
 }
+
