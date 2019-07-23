@@ -9,7 +9,7 @@ import java.util.Arrays;
  * 
  * Dated 22/07/2019
  */
-public final class Poly {    //immutable 
+public final class Poly {    //immutable thus 'final'
 
 	final int[] polynomial;
 	/**
@@ -114,4 +114,6 @@ public final class Poly {    //immutable
 		return retString;
 	}
 }
+
+
 
