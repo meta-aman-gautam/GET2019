@@ -75,9 +75,9 @@ public final class IntSet {
 		ArrayList<Integer> complement = new ArrayList<Integer>();
 		for (int count = 1; count <= 1000; count++) {
 			if (isMember(count)) {
-				continue;
-			} else
+			} else{
 				complement.add(count);
+			}
 		}
 		int[] complementArray = new int[complement.size()];
 		for (int count = 0; count < complement.size(); count++) {
