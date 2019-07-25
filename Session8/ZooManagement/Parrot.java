@@ -11,7 +11,6 @@ public class Parrot extends Bird{
 	float weight ;
 	int age ;
 
-
 	public Parrot(String name ,float weight ,int age){
 		this.name =name ;
 		this.weight=weight;
@@ -20,9 +19,7 @@ public class Parrot extends Bird{
 		this.type = "Parrot";
 		this.innateFeature = getInnateFeature();
 	}
-
-
-
+	
 	/**
 	 * method to return the sound of animals 
 	 * @return the sound of given animal
@@ -30,8 +27,5 @@ public class Parrot extends Bird{
 	public String getSound() {
 		return this.sound;
 	}
-
-
-
 	
 }
