@@ -69,10 +69,10 @@ public final class SparseMatrix {
 	public int[][] transpose() {
 		int[][] transposeArray = new int[sparseMatrix.length][3];
 		
-		for(int i = 0; i < sparseMatrix.length; i++) {
-			transposeArray[i][VALUE] = sparseMatrix[i][VALUE];
-			transposeArray[i][ROW_NUMBER] = sparseMatrix[i][COL_NUMBER];			//row to col
-			transposeArray[i][COL_NUMBER] = sparseMatrix[i][ROW_NUMBER];			//col to row
+		for(int count_i = 0; count_i < sparseMatrix.length; count_i++) {
+			transposeArray[count_i][VALUE] = sparseMatrix[count_i][VALUE];
+			transposeArray[count_i][ROW_NUMBER] = sparseMatrix[count_i][COL_NUMBER];			//row to col
+			transposeArray[count_i][COL_NUMBER] = sparseMatrix[count_i][ROW_NUMBER];			//col to row
 		}		
 		return transposeArray;
 	}
@@ -89,10 +89,10 @@ public final class SparseMatrix {
 		int[][] sparseTranspose = transpose();
 		int tempRow, tempCol;
 		
-		for(int i = 0; i < sparseMatrix.length; i++) {
-			tempRow = sparseTranspose[i][ROW_NUMBER];
-			tempCol = sparseTranspose[i][COL_NUMBER];
-			if(sparseTranspose[i][VALUE] != getValue(tempRow, tempCol)) {
+		for(int count_i = 0; count_i < sparseMatrix.length; count_i++) {
+			tempRow = sparseTranspose[count_i][ROW_NUMBER];
+			tempCol = sparseTranspose[count_i][COL_NUMBER];
+			if(sparseTranspose[count_i][VALUE] != getValue(tempRow, tempCol)) {
 				return false;
 			}
 		}
@@ -105,10 +105,10 @@ public final class SparseMatrix {
 	public int[][] getMatrix() {
 		int[][] matrix = new int[rows][columns];
 		int row, column;
-		for(int i = 0; i < sparseMatrix.length; i++) {
-			row = sparseMatrix[i][ROW_NUMBER];
-			column = sparseMatrix[i][COL_NUMBER];
-			matrix[row][column] = sparseMatrix[i][VALUE];
+		for(int count_i = 0; count_i < sparseMatrix.length; count_i++) {
+			row = sparseMatrix[count_i][ROW_NUMBER];
+			column = sparseMatrix[count_i][COL_NUMBER];
+			matrix[row][column] = sparseMatrix[count_i][VALUE];
 		}
 		return matrix;
 	}
@@ -119,9 +119,9 @@ public final class SparseMatrix {
 	 * @return value at given row and column
 	 */
 	private int getValue(int row, int col) {
-		for(int i = 0; i < sparseMatrix.length; i++) {
-			if(sparseMatrix[i][1] == row && sparseMatrix[i][2] == col) {
-				return sparseMatrix[i][0];
+		for(int count_i = 0; count_i < sparseMatrix.length; count_i++) {
+			if(sparseMatrix[count_i][1] == row && sparseMatrix[count_i][2] == col) {
+				return sparseMatrix[count_i][0];
 			}
 		}
 		return 0;
@@ -164,9 +164,9 @@ public final class SparseMatrix {
 		
 		for(int count_i = 0; count_i < sm_1.rows; count_i++) {											//row of 1st = a
 			for(int count_j = 0; count_j < sm_2.columns; count_j++) {									//col of 2nd = c
-				for(int k = 0; k <= sm_1.columns; k++) {								
+				for(int count_k = 0; count_k <= sm_1.columns; count_k++) {								
 					//same value for both = b
-					mulArray[count_i][count_j] += sm_1.getValue(count_i, k) * sm_2.getValue(k, count_j);
+					mulArray[count_i][count_j] += sm_1.getValue(count_i, count_k) * sm_2.getValue(count_k, count_j);
 				}				
 			}
 		}
