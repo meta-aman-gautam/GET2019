@@ -4,13 +4,25 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-
+/**
+ * String Counting class is created to calculate the unique character in a string .
+ *
+ * @author Aman Gautam
+ * Dated- 3/8/2019
+ *
+ */
 public class StringCounting {
 	
 	Map<String,Integer> map = new HashMap<String,Integer>(); 
 	Set<String> set  ;
 	
-	
+	/**
+	 * calculation method stores the unique character to inside the map no of unique charactesrs.
+	 * 
+	 * 
+	 * @param inputString
+	 * @return no of unique character
+	 */
 	public int calculation(String inputString){
 		set = new HashSet<String>(); 
 		int answer=0;  
@@ -23,6 +35,13 @@ public class StringCounting {
 		return answer;
 	}
 	
+	/**
+	 *  this method verifies that if the string is already present in the 
+	 *  cache memory .
+	 *  
+	 * @param inputString
+	 * @return cacheValue
+	 */
 	public int cache(String inputString){
 		int cacheValue= 0;
 		cacheValue=calculation(inputString);
@@ -35,7 +54,14 @@ public class StringCounting {
 		return cacheValue;
 	}
 	
+	/**
+	 * Check method checks the validation 
+	 * @param inString
+	 * @return 
+	 */
 	public int check(String inString){
+		assert(inString)!=null: "Input Invalid" ;
+		
 		if(cache(inString)!=-1){
 			return cache(inString);
 		}
@@ -45,28 +71,4 @@ public class StringCounting {
 		}
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

@@ -12,7 +12,7 @@ public class SortByEmpId implements Comparator<Employee> {
 
 	@Override
 	public int compare(Employee empId1, Employee empId2) {
+	
 		return empId1.empId - empId2.empId;
 	}
-
 }

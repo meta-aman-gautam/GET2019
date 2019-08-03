@@ -15,6 +15,4 @@ public class SortByAddress implements Comparator<Employee>{
 		
 		return address1.address.compareTo(address2.address);
 	}
-	
-	
 }

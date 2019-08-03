@@ -12,6 +12,7 @@ public class SortByName implements Comparator<Employee>{
 
 	@Override
 	public int compare(Employee name1, Employee name2) {
+		
 		return name1.empName.compareTo(name2.empName);
 	}
 }

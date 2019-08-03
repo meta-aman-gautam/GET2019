@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
 /**
- * this is MolecularMass class which is calculate the Mass of Molecular Compouds
+ * this is MolecularMass class which is calculate the Mass of Molecular Compounds
  * 
  * @author Aman Gautam
  * Dated - 3/8/2019
@@ -63,7 +63,8 @@ public class MolecularMass {
 	/*
 	 * evaluate method is used for the evaluation for molecular compound
 	 */
-	public int evaluate(String inputString){
+	public int evaluate(String inputString) throws AssertionError{
+		assert (inputString) != null:"Input Cannot be Null";
 		int temp=1,temp2=1 ;
 		for(int count_i =inputString.length()-1 ; count_i >=0;count_i--){
 			

@@ -63,6 +63,7 @@ public class EmployeeSortTest {
 			assertEquals(expectedListByName.get(count_i).empName, listOfEmployee.get(count_i).empName);
 		}
 	}
+	
 	//Positive test case
 	@Test
 	public void testforClass_SortedByEmpAddress() {
@@ -72,6 +73,7 @@ public class EmployeeSortTest {
 			assertEquals(expectedListByAddress.get(count_i).address, listOfEmployee.get(count_i).address);
 		}
 	}
+	
 	//Negative test case
 	@Test (expected=AssertionError.class)
 	public void testforClass_SortedByEmpId_AssertionError() {
@@ -81,6 +83,7 @@ public class EmployeeSortTest {
 			assertEquals(expectedListByAddress.get(count_i).empId, listOfEmployee.get(count_i).empId);
 		}
 	}
+	
 	//Negative test case
 	@Test  (expected=AssertionError.class)
 	public void testforClass_SortedByEmpName_AssertionError() {
@@ -90,6 +93,7 @@ public class EmployeeSortTest {
 			assertEquals(expectedListById.get(count_i).empName, listOfEmployee.get(count_i).empName);
 		}
 	}
+	
 	//Negative test case
 	@Test (expected=AssertionError.class)
 	public void testforClass_SortedByEmpAddress_AssertionError() {
@@ -99,5 +103,4 @@ public class EmployeeSortTest {
 			assertEquals(expectedListByName.get(count_i).address, listOfEmployee.get(count_i).address);
 		}
 	}
-
 }

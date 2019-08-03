@@ -17,29 +17,42 @@ public class MolecularMassTest {
 	
 	//Positive Test case
 	@Test
-	public void testForMolecularMass1() {
+	public void testForMolecularMass() {
 		expected=Obj.evaluate("H2OCO4(CO2)14");
 		assertEquals(expected, 710);
-	}
-	//Positive Test case
-	@Test
-	public void testForMolecularMass2() {
+		
 		expected=Obj.evaluate("H2OCO4");
 		assertEquals(expected, 94);
+		
+		expected=Obj.evaluate("(C22H)H2O");
+		assertEquals(expected, 283);
 	}
-	
-	//Positive Test case
-	@Test
-	public void testForMolecularMass3() {
-		expected=Obj.evaluate("(C22H1)13H2O");
-		assertEquals(expected, 3463);
-	}
+
 	
 	//Negative test case
-	@Test (expected =AssertionError.class)
-	public void testForMolecularMass_AssertionError() {
+	@Test 
+	public void testForMolecularMass_Failed() {
 		expected=Obj.evaluate("(C22H1)13H2O");
-		assertEquals(expected, 344);
+		assertNotEquals(expected, 344);
+		
+		expected=Obj.evaluate("(C22H)H2O");
+		assertNotEquals(expected, 31);
+		
+		expected=Obj.evaluate("H2O");
+		assertNotEquals(expected, 31);
+		
+		expected=Obj.evaluate("(C22H)");
+		assertNotEquals(expected, 264);
+	}
+	
+	//Assertion Error
+	@Test (expected = AssertionError.class)
+	public void testForMolecularMass_AssertionError() {
+		expected=Obj.evaluate(null);
+		assertEquals("Input Cannot be Null", expected);
+
+		
+	
 	}
 
 }
