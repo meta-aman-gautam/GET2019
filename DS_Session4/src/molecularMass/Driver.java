@@ -1,21 +1,18 @@
 package molecularMass;
-
-import java.util.HashMap;
-import java.util.Map;
-
+/**
+ * this driver class 
+ * 
+ * @author Aman Gautam
+ * dated -3/8/2019
+ */
 public class Driver {
-
-	
 	
 	public static void main(String[] args) {
 		
-		String inputString = "ABC";
+		String inputString = "H2OCO4(CO2)14";
 		MolecularMass mass = new MolecularMass();
-		
-		
-	
-		
 		mass.evaluate(inputString);
 	}
-
 }
+
+
