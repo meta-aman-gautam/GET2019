@@ -32,7 +32,8 @@ public class EmployeeTest {
 		currentNode = currentNode.next;
 		assertEquals("C", currentNode.data.getEmployeeName());
 	}
- // test case for equal salary condition then sort by age
+	
+	// test case for equal salary condition then sort by age
 	@Test
 	public void testSortByAge() {
 		LinkedList employeeList = new LinkedList();

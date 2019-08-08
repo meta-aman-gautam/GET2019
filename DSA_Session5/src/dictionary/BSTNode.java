@@ -1,74 +1,65 @@
 package dictionary;
 
-/**
- * Class Binary search tree node
- * 
- * @author Aman Gautam
- * 
- *Dated -06/08/2019
- */
 public class BSTNode {
 	private String key;
 	private String value;
-	BSTNode left,right,parent;
+	BSTNode leftChild,rightChild,parentNode;
 	
 	//constructor 
 	public BSTNode(String key, String value) {
 		super();
 		this.key = key;
 		this.value = value;
-		this.left = null;
-		this.right = null;
-		this.parent = null;
+		this.leftChild = this.rightChild = this.parentNode = null;
 	}
 
-	//getter  and setter methods 
+	//getter method for key
 	public String getKey() {
 		return key;
 	}
 
-
+	//setter method for key
 	public void setKey(String key) {
 		this.key = key;
 	}
 
-	
+	//getter method for value
 	public String getValue() {
 		return value;
 	}
 
-	
+	//setter method for value
 	public void setValue(String value) {
 		this.value = value;
 	}
 
-	
-	public BSTNode getLeft() {
-		return left;
+	//getter method for left child
+	public BSTNode getLeftChild() {
+		return leftChild;
 	}
 
-	
-	public void setLeft(BSTNode left) {
-		this.left = left;
+	//setter method for left child
+	public void setLeftChild(BSTNode left) {
+		this.leftChild = left;
 	}
 
-
-	public BSTNode getRight() {
-		return right;
+	//getter method right child
+	public BSTNode getRightChild() {
+		return rightChild;
 	}
 
-
-	public void setRight(BSTNode right) {
-		this.right = right;
+	//setter method for right
+	public void setRightChild(BSTNode right) {
+		this.rightChild = right;
 	}
 
-
-	public BSTNode getParent() {
-		return parent;
+	//getter method for parent
+	public BSTNode getParentNode() {
+		return parentNode;
 	}
 
-	
-	public void setParent(BSTNode parent) {
-		this.parent = parent;
+	//setter method for parent
+	public void setParentNode(BSTNode parent) {
+		this.parentNode = parent;
 	}	
 }

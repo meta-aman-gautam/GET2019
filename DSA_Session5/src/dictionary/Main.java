@@ -16,7 +16,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		try {
-			DictionaryImp dictionaryObj = new DictionaryImp();
+			DictionaryImplementation dictionaryObj = new DictionaryImplementation();
 			while (true) {
 				String key = "";
 				String value = "";
@@ -37,12 +37,12 @@ public class Main {
 					key = input.nextLine();
 					System.out.println("Enter the value for dictionary");
 					value = input.nextLine();
-					dictionaryObj.add(key, value);
+					dictionaryObj.addKeyValue(key, value);
 					break;
 				case 2:
 					System.out.println("Enter the key to be delete");
 					key = input.nextLine();
-					dictionaryObj.delete(key);
+					dictionaryObj.deleteKeyValue(key);
 					break;
 				case 3:
 					System.out.println("Enter the key to get value");
@@ -50,7 +50,7 @@ public class Main {
 					System.out.println("value- " +dictionaryObj.getValue(key));
 					break;
 				case 4:
-					valueList = dictionaryObj.getAll();
+					valueList = dictionaryObj.getAllKeys();
 					dictionaryObj.display(valueList);
 					break;
 				case 5:
@@ -58,11 +58,11 @@ public class Main {
 					key = input.nextLine();
 					System.out.println("Enter the key 2");
 					value = input.nextLine();
-					valueList = dictionaryObj.getBetween(key, value);
+					valueList = dictionaryObj.getBetweenTwoKeys(key, value);
 					dictionaryObj.display(valueList);
 					break;
 				case 6:
-					valueList = dictionaryObj.getAll();
+					valueList = dictionaryObj.getAllKeys();
 					dictionaryObj.display(valueList);
 					break;
 				case 7:

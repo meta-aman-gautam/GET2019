@@ -18,20 +18,24 @@ import org.junit.Test;
  */
 public class DictionaryImpTest {
 	@Test
-	public void addSuccessTest() throws Exception {
-
+	public void addSuccessTest(){
+		
 		String value = new String();
-		FileReader file = new FileReader("C:/AMAN/GET/PF/ASSIGNMENT2019/DS_Session5/src/dictionary/input.json.txt");
-		JSONParser parser = new JSONParser();
-		JSONObject json = (JSONObject) parser.parse(file);
-		Dictionary dictionary = new DictionaryImp(json);
-
-		value = dictionary.getValue("20");
-		assertEquals(value, "twenty");
-		value = dictionary.getValue("40");
-		assertEquals(value, "fourty");
-		value = dictionary.getValue("50");
-		assertEquals(value, "fifty");
+		try{
+			FileReader file = new FileReader("C:/AMAN/GET/PF/ASSIGNMENT2019/DS_Session5/src/dictionary/input.json.txt");
+			JSONParser parser = new JSONParser();
+			JSONObject json = (JSONObject) parser.parse(file);
+			Dictionary dictionary = new DictionaryImplementation(json);
+			value = dictionary.getValue("20");
+			assertEquals(value, "twenty");
+			value = dictionary.getValue("40");
+			assertEquals(value, "fourty");
+			value = dictionary.getValue("50");
+			assertEquals(value, "fifty");
+		}
+		catch(Exception e){
+			System.out.println("File not found");
+		}
 	}
 
 	/**
@@ -39,19 +43,24 @@ public class DictionaryImpTest {
 	 * @throws Exception
 	 */
 	@Test
-	public void deleteSuccessTest() throws Exception {
+	public void deleteSuccessTest() {
 
-		FileReader file = new FileReader("C:/AMAN/GET/PF/ASSIGNMENT2019/DS_Session5/src/dictionary/input.json.txt");
-		JSONParser parser = new JSONParser();
-		JSONObject json = (JSONObject) parser.parse(file);
-		DictionaryImp dictionary = new DictionaryImp(json);
+		try{
+			FileReader file = new FileReader("C:/AMAN/GET/PF/ASSIGNMENT2019/DS_Session5/src/dictionary/input.json.txt");
+			JSONParser parser = new JSONParser();
+			JSONObject json = (JSONObject) parser.parse(file);
+			DictionaryImplementation dictionary = new DictionaryImplementation(json);
 
-		List<Value> expected = new ArrayList<Value>();
-		expected.add(new Value("20", "twenty"));
-		expected.add(new Value("40", "fourty"));
-		expected.add(new Value("50", "fifty"));
-		boolean result = dictionary.delete("20");
-		assertTrue(result);
+			List<Value> expected = new ArrayList<Value>();
+			expected.add(new Value("20", "twenty"));
+			expected.add(new Value("40", "fourty"));
+			expected.add(new Value("50", "fifty"));
+			boolean result = dictionary.deleteKeyValue("20");
+			assertTrue(result);
+		}
+		catch(Exception e){
+			System.out.println("File not Found");
+		}
 	}
 
 	/**
@@ -60,8 +69,8 @@ public class DictionaryImpTest {
 	 */
 	@Test(expected = NullPointerException.class)
 	public void nullValueTest() throws Exception {
-		Dictionary dictionary = new DictionaryImp();
-		dictionary.add(null, "value");
+		Dictionary dictionary = new DictionaryImplementation();
+		dictionary.addKeyValue(null, "value");
 	}
 
 	/**
@@ -70,7 +79,7 @@ public class DictionaryImpTest {
 	 */
 	@Test(expected = NullPointerException.class)
 	public void nullKeyTest() throws Exception {
-		Dictionary dictionary = new DictionaryImp();
-		dictionary.add("key", null);
+		Dictionary dictionary = new DictionaryImplementation();
+		dictionary.addKeyValue("key", null);
 	}
 }

@@ -8,12 +8,14 @@ package employee;
  */
 public class LinkedList {
 	Node headNode;
-/**
- * method to insert data into linked list
- * @param list linked list which contain employee data
- * @param data of employee
- * @return list of employee
- */
+
+	/**
+	 * method to insert data into linked list
+	 * 
+	 * @param list {LinkedList} contain employee's data
+	 * @param data of employee
+	 * @return list{List} of employee
+	 */
 	public LinkedList insert(LinkedList list, Employee data) {
 		Node newNode = new Node(data);
 		newNode.next = null;
@@ -29,30 +31,33 @@ public class LinkedList {
 		}
 		return list;
 	}
-/**
- * method to get list of employee sorted by salary
- * @param employeeList get list of employees
- * @return sorted list
- */
+
+	/**
+	 * method to get list of employee sorted by salary
+	 * 
+	 * @param employeeList {LinkedList} list of employees (unsorted)
+	 * @return sorted list {LinkedList}
+	 */
 	public LinkedList sortBySalary(LinkedList employeeList) {
 
 		Node currentNode = employeeList.headNode;
 		Node nextNode = null;
-		Employee swapFlag;
+		Employee swap;
 		while (currentNode != null) {
 			nextNode = currentNode.next;
 			while (nextNode != null) {
+				
 				if (nextNode.data.getEmployeeSalary() > currentNode.data.getEmployeeSalary()) {
-					swapFlag = currentNode.data;
+					swap = currentNode.data;
 					currentNode.data = nextNode.data;
-					nextNode.data = swapFlag;
+					nextNode.data = swap;
 				}
-				//for sorting on age basis when salary of two employees are equal 
+				// for sorting on age basis when salary of two employees are equal
 				if (nextNode.data.getEmployeeSalary() == currentNode.data.getEmployeeSalary()) {
 					if (nextNode.data.getEmployeeAge() <= currentNode.data.getEmployeeAge()) {
-						swapFlag = currentNode.data;
+						swap = currentNode.data;
 						currentNode.data = nextNode.data;
-						nextNode.data = swapFlag;
+						nextNode.data = swap;
 					}
 				}
 				nextNode = nextNode.next;
