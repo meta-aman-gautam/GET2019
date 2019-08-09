@@ -1,8 +1,0 @@
-{
-"20":"twenty"
-"40":"fourty"
-"50":"fifty"
-"60":"sixty"
-"70":"seventy"
-"80":"eighty"
-}

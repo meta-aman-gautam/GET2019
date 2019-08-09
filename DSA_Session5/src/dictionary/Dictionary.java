@@ -1,22 +1,24 @@
 package dictionary;
-import java.util.*;
 
 /**
  * interface dictionary for DictionaryImp class . 
  * 
  * @author Aman Gautam
  * 
- * Date - 06/08/2019
+ * Date - 08/08/2019
  */
 public interface Dictionary {
 
-	public boolean addKeyValue(String key, String value);
+	public void insertKey(KeyValuePair data);
+
+	public Node deleteKey(int data);
+
+	public String getKeyValue(int data);
+
+	public void getSortedList(Node root);
+
+	public void getSortedListRange(Node root, int key1, int key2);
 	
-	public boolean deleteKeyValue(String key);
+	public void inOrderTraversal(Node root);
 	
-	public String getValue(String key);
-	
-	public List<Value> getAllKeys();
-	
-	public List<Value> getBetweenTwoKeys(String key1,String key2);
 }

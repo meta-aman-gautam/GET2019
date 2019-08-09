@@ -1,274 +1,190 @@
 package dictionary;
 
-import java.util.*;
+import java.util.ArrayList;
 
-import org.json.simple.JSONObject;
-
+/**
+ * The Class DictionaryImplementation.
+ * @author Aman Gautam
+ * 
+ * Date - 08/08/2019
+ */
 public class DictionaryImplementation implements Dictionary {
-	BSTNode headNode;
 	
+	Node root;
+	ArrayList<KeyValuePair> listRange;
+	ArrayList<KeyValuePair> list;
+
 	/**
-	 * parameterized constructor
-	 * @input json object
-   	 */
-	public DictionaryImplementation(JSONObject jsonObject) {
-		this.headNode = null;
-		this.input(jsonObject);
-	}
-	
-	//default constructor
+	 * Instantiates a new dictionary implementation.
+	 */
 	public DictionaryImplementation() {
+		root =null;
+		list = new ArrayList<KeyValuePair>();
+		listRange = new ArrayList<KeyValuePair>();
 	}
-
+	
 	/**
-	 * method for add key and value from json object
-	 * @param jsonObject
+	 * Method Insert Key
+	 * @param {KeyValuePair} data
 	 */
-	private boolean input(JSONObject jsonObject){
+	@Override
+	public void insertKey(KeyValuePair data){
+		root = insertKeyRecursively(root,data);
+	}
+	
+	/**
+	 * Insert key recursively.
+	 *
+	 * @param {Node}root 
+	 * @param {KeyValuePair}data 
+	 * @return {Node}
+	 */
+	private Node insertKeyRecursively(Node root,KeyValuePair data){
+		if(root==null){
+			root = new Node(data);
+		}
+		else if(data.key <root.data.key){
+			root.leftChild = insertKeyRecursively(root.leftChild, data);
+		}
+		else if(data.key>root.data.key){
+			root.rightChild = insertKeyRecursively(root.rightChild, data);
+		}
 		
-		for(Object obj : jsonObject.keySet()){
-			String key = (String)obj;
-			String value = (String) jsonObject.get(key);
-			this.addKeyValue(key, value);
-		}
-		return true;
+		return root;
 	}
-
-
-
+	
 	/**
-	 * method for add key and value in BST
+	 * Find minimum of the nodes.
+	 *
+	 * @param  {Node} root 
+	 * @return {Node} root
 	 */
-
-	@Override
-	public boolean addKeyValue(String key, String value){
-		if (key.length() == 0 || value.length() == 0 || key == null || value == null) {
-			System.out.println("Invalid key or value");
+	private Node findMinimum(Node root){
+		while(root!=null){
+			root = root.leftChild;
 		}
-		if (headNode == null) {
-			headNode = new BSTNode(key, value);
-		} else {
-			addRecursively(key, value, headNode);
-		}
-		return false;
+		
+		return root;
 	}
 
 	/**
-	 * Recursive function for adding key and value in BST
-	 * @param key {String Type}
-	 * @param value {String Type}
-	 * @param node {BSTNode type}
-	 * @return {Boolean value}
-	 */
-	private boolean addRecursively(String key, String value, BSTNode node) {
-		// go left if key less than current node key
-		if (key.compareTo(node.getKey()) < 0) {
-			if (node.getLeftChild() != null) {
-				// if left is present call recursive
-				addRecursively(key, value, node.getLeftChild());
-			} else {
-				// add value to left
-				node.setLeftChild(new BSTNode(key, value));
-				node.getLeftChild().setParentNode(node);
-			}
-		}
-		// go right if key is greater than current node key
-		else if (key.compareTo(node.getKey()) > 0) {
-			if (node.getRightChild() != null) {
-				// if right is present call recursive
-				addRecursively(key, value, node.getRightChild());
-			} else {
-				// add value to right
-				node.setRightChild(new BSTNode(key, value));
-				node.getRightChild().setParentNode(node);
-			}
-		} else {
-			node = new BSTNode(key, value);
-		}
-		return true;
-	}
-
-
-	/**
-	 * method for delete a key and value form BST 0
-	 * @param key {String Type}
+	 * deleteKey method 
+	 * @param {Node}
 	 */
 	@Override
-	public boolean deleteKeyValue(String key) {
-
-		if (key.length() == 0 || key == null) {
-			System.out.println("Invalid key...");
-		}
-
-		else if (headNode != null) {
-			return deleteRecursively(key, headNode);
-		}
-		return false;
+	public Node deleteKey(int data){
+		
+		root = deleteKeyRecursively(root,data);
+		return root;
 	}
-
+	
 	/**
-	 * recursive function for deleting a key form BST
-	 * @param key{String Type}
-	 * @param node{BSTNode Type }
-	 * @return {Boolean value}
+	 * Delete key recursively.
+	 *
+	 * @param {Node} root
+	 * @param {Integer}data 
+	 * @return {Node}
 	 */
-	private boolean deleteRecursively(String key, BSTNode node) {
-		// go left if key less than current node key
-		if (key.compareTo(node.getKey()) < 0) {
-			if (node.getLeftChild() != null) {
-				// if left is present call recursive
-				return deleteRecursively(key, node.getLeftChild());
+	private Node deleteKeyRecursively(Node root, int data){
+		if(root==null){
+			return root;
+		}
+		else if(data <root.data.key){
+			root.leftChild = deleteKeyRecursively(root.leftChild, data);
+		}
+		else if(data>root.data.key){
+			root.rightChild = deleteKeyRecursively(root.rightChild, data);
+		}
+		else{
+			if(root.leftChild==null && root.rightChild ==null){
+				 root =null;
+			}
+			else if(root.leftChild!=null && root.rightChild ==null){
+				root= root.leftChild;
+			}
+			else if(root.leftChild==null && root.rightChild !=null){
+				root =root.rightChild;
+			}
+			else{
+				Node tempNode = root;
+				root = findMinimum(root.rightChild);
+				root.data.key =tempNode.data.key ;
+				root.data.value =tempNode.data.value;
+				root.rightChild = deleteKeyRecursively(root.rightChild, tempNode.data.key);
 			}
 		}
-		// go right if key is greater than current node key
-		else if (key.compareTo(node.getKey()) > 0) {
-			if (node.getRightChild() != null) {
-				// if right is present call recursive
-				return deleteRecursively(key, node.getRightChild());
+		return root;
+	}
+	
+	/**
+	 * Method getkeyValue
+	 * @param {String}
+	 */
+	@Override
+	public String getKeyValue(int data){
+		Node node = this.root;
+		while(node!=null)
+		{
+		
+			if(node.data.key == data){
+				return node.data.value ;
 			}
-		}
-		// if key is equal to node key
-		else if (key.compareTo(node.getKey()) == 0) {
-			// check if it is a leaf node
-			if (node.getLeftChild() == null && node.getRightChild() == null) {
-				if (node.getParentNode() == null) {
-					headNode = null;
-				}
-				// set parent child null if it is leaf node
-				else if (node.getParentNode().getLeftChild() == node) {
-					node.getParentNode().setLeftChild(null);
-				} else {
-					node.getParentNode().setRightChild(null);
-				}
+			else if(node.data.key > data){
+				node = node.leftChild;
 			}
-			// if left node is null
-			else if (node.getLeftChild() == null && node.getRightChild() != null) {
-				if (node.getParentNode() == null) {
-					BSTNode newNode = findMinimum(node.getRightChild());
-					node.setKey(newNode.getKey());
-					node.setValue(newNode.getValue());
-					return deleteRecursively(newNode.getKey(), newNode);
-				}
-				// if self is left than set parent left else set parent right
-				else if (node.getParentNode().getLeftChild() == node) {
-					node.getParentNode().setLeftChild(node.getRightChild());
-				} else {
-					node.getParentNode().setRightChild(node.getRightChild());
-				}
-			}
-			// if right is null
-			else if (node.getRightChild() == null && node.getLeftChild() != null) {
-				// if self is right set parent right else set parent left
-				if (node.getParentNode().getRightChild() == node) {
-					node.getParentNode().setRightChild(node.getLeftChild());
-				} else {
-					node.getParentNode().setLeftChild(node.getLeftChild());
-				}
-			}
-
 			else {
-				BSTNode newNode = findMinimum(node.getRightChild());
-				node.setKey(newNode.getKey());
-				node.setValue(newNode.getValue());
-				return deleteRecursively(newNode.getKey(), newNode);
+				node = node.rightChild;
 			}
 		}
-		return true;
-
+		return "Value for this Key Does NOT EXIST";
 	}
-
+	
 	/**
-	 * method to find minimum value from tree
-	 * @param currentNode {BSTNode type}
-	 * @return currentNode {BSTNode type}
-	 */
-	private BSTNode findMinimum(BSTNode currentNode) {
-		while (currentNode.getLeftChild() != null) {
-			currentNode = currentNode.getLeftChild();
-		}
-		return currentNode;
-
-	}
-
-	/**
-	 * method to traverse tree using InOrderTraversing
-	 * @param root{BSTNode type}
-	 * @param list{List type}
-	 * @return list{List type}
-	 */
-	private List<Value> inorderRecursion(BSTNode root, List<Value> list) {
-		if (root != null) {
-			inorderRecursion(root.leftChild, list);
-			list.add(new Value(root.getKey(), root.getValue()));
-			inorderRecursion(root.rightChild, list);
-		}
-		return list;
-	}
-
-	/**
-	 * method to find a value with key 
-	 * @param key{String type}
+	 * Method getSorted list .
+	 * @param node
 	 */
 	@Override
-	public String getValue(String key) {
-		if (headNode != null) {
-			return getValueRecursion(key, headNode);
+	public void getSortedList(Node root){
+		
+		if(root==null){
+			return;
 		}
-		return null;
+		getSortedList(root.leftChild);
+		list.add(root.data) ;
+		getSortedList(root.rightChild);
 	}
-
+	
 	/**
-	 * recursive method to find a value form tree
-	 * @param key {String type}
-	 * @param node{BSTNode type}
-	 * @return {String type}
-	 */
-	private String getValueRecursion(String key, BSTNode node) {
-		if (node == null) {
-			return null;
-		} else if (key.compareTo(node.getKey()) == 0) {
-			return node.getValue();
-		} else if (key.compareTo(node.getKey()) < 0) {
-			return getValueRecursion(key, node.getLeftChild());
-		} else if (key.compareTo(node.getKey()) > 0) {
-			return getValueRecursion(key, node.getRightChild());
-		} else
-			return null;
-	}
-
-	/*
-	 * method to find all values from tree
+	 * Method getSorted list in range .]
+	 * @param Node
 	 */
 	@Override
-	public List<Value> getAllKeys() {
-		List<Value> valueList = new ArrayList<Value>();
-		if (headNode != null) {
-			valueList = inorderRecursion(headNode, valueList);
+	public void getSortedListRange(Node root , int key1 ,int key2){
+		
+		if(root==null){
+			return;
 		}
-		return valueList;
+		getSortedListRange(root.leftChild , key1, key2);
+		
+		if(root.data.key>= key1 && root.data.key<=key2){
+			listRange.add(root.data);
+		}
+		getSortedListRange(root.rightChild , key1, key2);
 	}
-
+	
 	/**
-	 * method to find list of key/value pairs between keys(inclusive at both ends) 
-	 * @param key1 {String type}
-	 * @param key2 {String type}
+	 * Method for inorder traversal 
+	 * @param root
 	 */
 	@Override
-	public List<Value> getBetweenTwoKeys(String key1, String key2) {
-		List<Value> list = getAllKeys();
-		List<Value> finalList = new ArrayList<Value>();
-		for (Value v : list) {
-			if (v.getKey().compareTo(key1) >= 0 && v.getKey().compareTo(key2) <= 0) {
-				finalList.add(v);
-			}
+	public void inOrderTraversal(Node root){
+		
+		if(root==null){
+			return ;
 		}
-		return finalList;
-	}
-
-	public void display(List<Value> valueList) {
-		for (int i = 0; i < valueList.size(); i++) {
-			System.out.println("Key-" + valueList.get(i).getKey()
-								+ " value-"+ valueList.get(i).getValue());
-		}
-	}
+	
+		inOrderTraversal(root.leftChild);
+		System.out.println("Key-> "+root.data.key+" "+ "data-> "+root.data.value);
+		inOrderTraversal(root.rightChild);
+	}	
 }
