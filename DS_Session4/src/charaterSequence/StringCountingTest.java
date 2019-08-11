@@ -7,22 +7,13 @@ import org.junit.Test;
  * Test class creation for - method Calculating and Check
  * 
  * @author Aman Gautam
- * Date- 3/8/2019 
+ * Date- 11/8/2019 
  */
 public class StringCountingTest {
 
 	StringCounting SC = new StringCounting();
 
-	//Positive Test cases
-	@Test
-	public void testForCheck() {
-		assertEquals(0, SC.check("AMAN GAUTAM"));
-		assertEquals(0, SC.check("AMAN KUMAR GAUTAM"));
-		assertEquals(6, SC.check("AMAN GAUTAM"));
-		assertEquals(0, SC.check("AMAN"));
-		assertEquals(0, SC.check("A"));
-		assertEquals(3, SC.check("AMAN"));
-	}
+
 	
 	//Positive Test Cases 
 	@Test 
@@ -41,19 +32,11 @@ public class StringCountingTest {
 		assertNotEquals(8, SC.calculation("A GAUT AM"));
 
 	}
-	//Negative Test Cases
-	@Test 
-	public void testForCheck_Negative() {
-		//wrong expected values
-		assertNotEquals(6, SC.check("AMAN GAUTAM"));
-		assertNotEquals(8, SC.check("AMAN KUMAR GAUTAM"));
-		assertNotEquals(3, SC.check("AMAN"));
-	}
-	
+
 	//Assertion Error
 	@Test (expected = AssertionError.class)
 	public void testForCheck_AssertionError() {
-		assertEquals("Input Invalid", SC.check(null));
+		assertEquals("Input Invalid", SC.calculation(null));
 	
 	}
 }

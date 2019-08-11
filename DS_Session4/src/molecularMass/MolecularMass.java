@@ -7,20 +7,20 @@ import java.util.Stack;
  * this is MolecularMass class which is calculate the Mass of Molecular Compounds
  * 
  * @author Aman Gautam
- * Dated - 3/8/2019
+ * Dated - 11/8/2019
  */
 public class MolecularMass {
 	
 	int mass=0,submass=0;
 	
-	Map<String, Integer> map = new HashMap<String, Integer>();
+	Map<String, Integer> compoundMap = new HashMap<String, Integer>();
 	Stack<Integer> massStack = new Stack<>();
 	Stack<Integer> tempStack = new Stack<>();
 
 	public MolecularMass() {
-		map.put("C", 12);
-		map.put("O", 16);
-		map.put("H", 1);
+		compoundMap.put("C", 12);
+		compoundMap.put("O", 16);
+		compoundMap.put("H", 1);
 	}
 	/*
 	 * dummy is used to capture the Integer value after brackets 
@@ -70,7 +70,7 @@ public class MolecularMass {
 			
 			if(Character.isAlphabetic(inputString.charAt(count_i))){
 				temp=alphabetic(count_i, inputString);
-				mass=map.get(Character.toString(inputString.charAt(count_i)))*temp;
+				mass=compoundMap.get(Character.toString(inputString.charAt(count_i)))*temp;
 				massStack.push(mass);
 			}
 			
@@ -79,7 +79,7 @@ public class MolecularMass {
 				while(!"(".equals(Character.toString((inputString.charAt(count_i))))){
 					if(Character.isAlphabetic(inputString.charAt(count_i))){
 						temp2=alphabetic(count_i, inputString);
-						submass+=map.get(Character.toString(inputString.charAt(count_i)))*temp2;
+						submass+=compoundMap.get(Character.toString(inputString.charAt(count_i)))*temp2;
 					}
 					count_i--;
 					mass=submass ;

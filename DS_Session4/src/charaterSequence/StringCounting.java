@@ -2,13 +2,14 @@ package charaterSequence;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.InputMismatchException;
 import java.util.Map;
 import java.util.Set;
 /**
  * String Counting class is created to calculate the unique character in a string .
  *
  * @author Aman Gautam
- * Dated- 3/8/2019
+ * Dated- 11/8/2019
  *
  */
 public class StringCounting {
@@ -26,12 +27,32 @@ public class StringCounting {
 	public int calculation(String inputString){
 		set = new HashSet<String>(); 
 		int answer=0;  
-		for(int count_i=0;count_i<inputString.length();count_i++){
-			if(!" ".equals(Character.toString(inputString.charAt(count_i)))){
-				set.add(Character.toString(inputString.charAt(count_i))); 
+		
+		try {
+			if(inputString ==null) {
+				throw new InputMismatchException("Wrong Input");
 			}
+			else if(inputString ==" ") {
+				throw new InputMismatchException("Input cannot be empty");
+			}
+			
+			if(cache(inputString)!=-1) {
+				answer= cache(inputString);
+			}
+			else {
+				for(int count_i=0;count_i<inputString.length();count_i++){
+					if(!" ".equals(Character.toString(inputString.charAt(count_i)))){
+						set.add(Character.toString(inputString.charAt(count_i))); 
+					}
+				}
+				answer = set.size();
+				map.put(inputString, answer);
+			}
+			
 		}
-		answer = set.size();
+		catch(Exception e) {
+			System.out.println(e);
+		}
 		return answer;
 	}
 	
@@ -43,32 +64,14 @@ public class StringCounting {
 	 * @return cacheValue
 	 */
 	public int cache(String inputString){
-		int cacheValue= 0;
-		cacheValue=calculation(inputString);
+		int cacheValue= -1;
 		if(map.containsKey(inputString)){
-			cacheValue= map.get(inputString);;
+			cacheValue= map.get(inputString);
 		}
-		else if(!map.containsKey(inputString)){
-			cacheValue= -1;
-		}
+		
 		return cacheValue;
 	}
 	
-	/**
-	 * Check method checks the validation 
-	 * @param inString
-	 * @return 
-	 */
-	public int check(String inString){
-		assert(inString)!=null: "Input Invalid" ;
-		
-		if(cache(inString)!=-1){
-			return cache(inString);
-		}
-		else{
-			map.put(inString, calculation(inString));
-			return 0;
-		}
-	}
+
 }
 

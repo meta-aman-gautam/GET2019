@@ -7,7 +7,7 @@ import org.junit.Test;
  * this is Test class for MolecularMass Test
  * 
  * @author Aman Gautam
- * dated -3/8/2019
+ * dated -11/8/2019
  *
  */
 public class MolecularMassTest {
@@ -50,9 +50,6 @@ public class MolecularMassTest {
 	public void testForMolecularMass_AssertionError() {
 		expected=Obj.evaluate(null);
 		assertEquals("Input Cannot be Null", expected);
-
-		
-	
 	}
 
 }
