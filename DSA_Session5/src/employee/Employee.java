@@ -5,33 +5,18 @@ package employee;
  * 
  * @author Aman Gautam
  * 
- * Dated - 06/08/2019
+ * Dated - 11/08/2019
  */
 public class Employee {
-	private String employeeName;
-	private double employeeSalary;
-	private int employeeAge;
-
-	/*
-	 * constructor to get employee details
-	 */
-	Employee(String employeeName, double employeeSalary, int employeeAge) {
-		this.employeeName = employeeName;
-		this.employeeSalary = employeeSalary;
-		this.employeeAge = employeeAge;
-	}
-	// getter setters
 	
-	public String getEmployeeName() {
-		return this.employeeName;
-	}
+	String empName ;
+	int age ;
+	double salary;
 	
-	public double getEmployeeSalary() {
-		return this.employeeSalary;
-	}
-	
-	public int getEmployeeAge() {
-		return this.employeeAge;
+	public Employee(String empName ,int age ,double salary) {
+		this.salary = salary;
+		this.age = age ;
+		this.empName = empName;
 	}
 	
 }

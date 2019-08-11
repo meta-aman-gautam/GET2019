@@ -1,17 +1,22 @@
 package employee;
 
-import java.util.*;
+import java.util.Scanner;
 /**
- * Intialization of main method
+ * Driver Class
  * 
  * @author Aman Gautam
  * 
- * Dated - 06/08/2019
+ * Dated - 11/08/2019
  */
-public class Main {
-
+public class Main{
+	
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 */
 	public static void main(String[] args) {
-		
+
 		try {
 			LinkedList employeeList = new LinkedList();
 			Employee employeeObject;
@@ -37,19 +42,15 @@ public class Main {
 						}
 						System.out.println("enter Salary of employee");
 						employeeSalary = input.nextDouble();
-						employeeObject = new Employee(employeeName, employeeSalary, employeeAge);
-						employeeList = employeeList.insert(employeeList, employeeObject);
+						employeeObject = new Employee(employeeName, employeeAge, employeeSalary);
+						employeeList.insertEmployee(employeeObject);
 						noOfEmployee--;
 					}
-					employeeList.sortBySalary(employeeList);
-					Node currentNode = employeeList.headNode;
-					while (currentNode != null) {
-						System.out.println("Name- " + currentNode.data.getEmployeeName() 
-										+ "  Age- "	+ currentNode.data.getEmployeeAge()
-								        + "  Salary- " + currentNode.data.getEmployeeSalary());
-						
-						currentNode = currentNode.next;
-					}
+					employeeList.show();
+					System.out.println("Sorted -->");
+					employeeList.sortBySalary();
+					employeeList.show();
+					
 					
 					System.out.println("Press 0 to exit or any number to continue");
 					flag = input.nextInt();
@@ -65,9 +66,11 @@ public class Main {
 			}
 			
 		} catch (Exception e) {
-			System.out.println("Invalid data....  Try again");
+			System.out.println(e);
 			main(args);
 
 		}
 	}
 }
+
+		
