@@ -33,7 +33,7 @@ public class ArrayQueueTest {
 	@Test
 	public void testDeQueue(){
 		
-		assertEquals(-1111, queue.deQueue());
+		assertEquals(-2147483648, queue.deQueue());
 		
 		queue.enQueue(1);
 		queue.enQueue(2);
