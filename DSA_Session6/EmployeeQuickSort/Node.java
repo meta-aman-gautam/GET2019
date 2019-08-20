@@ -1,11 +1,19 @@
 package EmployeeQuickSort;
-
+/**
+ * class to represent a node in linkedList
+ * @author Aman Gautam
+ */
 public class Node {
-	
-	Employee data;
-	Node next;
-	public Node(Employee data){
-		this.data = data;
-		next = null;
+
+	public Employee employee;
+	public Node next;
+
+	/**
+	 * constructor for Node
+	 * @param employee
+	 */
+	public Node(Employee employee) {
+		this.employee = employee;
+		this.next = null;
 	}
 }
