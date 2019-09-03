@@ -3,12 +3,139 @@ package com.metacube.ead.dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
-public class MySqlDao implements BaseDao {
+import javax.jws.Oneway;
 
-	QueryDao objQueryDao = new QueryDao();
-	JdbcConnection objConnection =new JdbcConnection();
+import com.metacube.ead.enums.Status;
+import com.metacube.ead.factory.FactoryPattern;
+import com.metacube.ead.model.Product;
+import com.metacube.ead.model.ShoppingCart;
+
+/**
+ * The Class MySqlDao.{DAO LAYER}
+ * @author Aman Gautam
+ */
+public class MySqlDao implements BaseDao<Product> {
+
+	QueryDao objQueryDao = (QueryDao) FactoryPattern.FactoryPatternObject("QueryDao");
+	JdbcConnection objConnection =  (JdbcConnection) FactoryPattern.FactoryPatternObject("JdbcConnection");
+
+	/**
+	 * Definition of addToProductToCart method
+	 * @return Status{enum}
+	 */
+	@Override
+	public Status addToProductToCart(int id,int pId, int pQty) {
+		if(pQty<=0){
+			return Status.INVALID;
+		}
+		else{
+			String queryString = objQueryDao.addProductToCart(id,pId, pQty);
+			try{
+				PreparedStatement preStatement = objConnection.getObjConnection().prepareStatement(queryString);
+				if(preStatement.executeUpdate()==1){
+					return Status.ADDED;
+				}
+				else{
+					return Status.ERROR;
+				}
+			}
+			catch(Exception e){
+				System.out.println(e.getMessage());
+				return Status.ERROR ;
+			}
+		}
+	}
+
+	/**
+	 * Definition of updateCart method
+	 * @return Status{enum}
+	 */
+	@Override
+	public Status updateCart(int id,int productId,int qty) {
+		if(qty<=0){
+			String queryString = objQueryDao.deleteProduct(id,productId, qty);
+			try {
+				PreparedStatement preStatement = objConnection.getObjConnection().prepareStatement(queryString);
+				System.out.println(queryString);
+				if(preStatement.executeUpdate()==1){
+					return Status.DELETED;
+				}
+				else{
+					return Status.ERROR;
+				}
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+				return Status.ERROR;
+			}
+		}
+		
+		else{
+			String queryString = objQueryDao.updateCart(id,productId,qty);
+			try {
+				PreparedStatement preStatement = objConnection.getObjConnection().prepareStatement(queryString);
+				int a = preStatement.executeUpdate();
+				if(a==1){
+					return Status.UPDATED;
+				}
+				else{
+					return Status.ERROR;
+				}
+			}catch (Exception e) {
+				System.out.println(e.getMessage());
+				return Status.ERROR;
+			}
+		}	
+	}
 	
+	/**
+	 * Definition of showCart method
+	 * @return List{ShoppingCart}
+	 */
+	@Override
+	public List<ShoppingCart> showCart(int id) {
+		List<ShoppingCart> cartList = new ArrayList<>();
+		String queryString = objQueryDao.showCart(id);
+		try{
+			PreparedStatement preStatement = objConnection.getObjConnection().prepareStatement(queryString);
+			ResultSet resultSet = preStatement.executeQuery();
+			while(resultSet.next()){
+				cartList.add(new ShoppingCart(resultSet.getInt(2),resultSet.getString(3),resultSet.getString(4),
+						resultSet.getInt(5),resultSet.getDouble(6),resultSet.getInt(7),resultSet.getDouble(8)));
+			}
+			return cartList;
+		}catch(Exception e){
+			return null;
+		}
+	}
+
+	/**
+	 * Definition of showProduct method
+	 * @return List{Product}
+	 */
+	@Override
+	public List<Product> showProduct() {
+		List<Product> productList = new ArrayList<>();
+		String queryString = objQueryDao.showProduct();
+		try{
+			PreparedStatement preStatement = objConnection.getObjConnection().prepareStatement(queryString);
+			ResultSet resultSet = preStatement.executeQuery();
+			while(resultSet.next()){
+				productList.add(new Product(resultSet.getInt(1),resultSet.getString(2),resultSet.getFloat(3),resultSet.getString(4)));
+			}
+			return productList;
+		}catch(Exception e){
+			return null;
+		}
+	}
+
+	/**
+	 * Definition of checkLoginStatus method
+	 * @return boolean
+	 */
+	@Override
 	public boolean checkLoginStatus(int id, String pass) {
 		String queryString = objQueryDao.checkLoginStatus(id, pass);
 		try {
@@ -28,38 +155,4 @@ public class MySqlDao implements BaseDao {
 			return false;
 		}
 	}
-
-	@Override
-	public void addProductToCart() {
-		
-	}
-
-	@Override
-	public String updateCart() {
-		return null;
-	}
-
-	@Override
-	public String showCart(int id) {
-		String answer =null;
-		String queryString = objQueryDao.showCart(id);
-		try {
-			PreparedStatement preStatement = objConnection.getObjConnection().prepareStatement(queryString);
-			ResultSet resultSet = preStatement.executeQuery();
-			answer="Product id    "+"Product Name  "+"  Product Type"+"    Qty "+"    Price   "+"No_Of_Products"+"Total_Price \n";
-			while(resultSet.next()) { 
-				answer =answer+"\t"+resultSet.getString(2)+"\t"+resultSet.getString(3)+"\t"+resultSet.getString(4)+"\t"+resultSet.getString(5)+"\t"
-						+resultSet.getString(6)+"\t"+resultSet.getString(7)+"\t"+resultSet.getString(8)+"\n";
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
-		return answer ;
-	}
-
-	
-	
-	
 }

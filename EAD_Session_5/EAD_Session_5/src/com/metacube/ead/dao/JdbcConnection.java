@@ -3,17 +3,26 @@ package com.metacube.ead.dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
+/**
+ * The Class JdbcConnection.{DAO LAYER}
+ * @author Aman Gautam
+ */
 public class JdbcConnection {
 
-	static final String DRIVER = "com.mysql.jdbc.Driver";
-	static final String HOST = "jdbc:mysql://localhost:3306/";
-	static final String DBNAME = "shoppingcart?useSSL=false";
-	static final String MYSQLURL = HOST+DBNAME;
-	static final String USERID = "root";
-	static final String PASSWORD = "1083543569";
+	/** Constants. */
+	static final String DRIVER = "com.mysql.jdbc.Driver",
+						HOST = "jdbc:mysql://localhost:3306/",
+						DBNAME = "shoppingcart",
+						MYSQLURL = HOST+DBNAME,
+						USERID = "root",
+						PASSWORD = "1083543569";
 	
+
 	Connection objConnection ;
 	
+	/**
+	 * Instantiates a new jdbc connection.
+	 */
 	public JdbcConnection() {
 		try {
 			Class.forName(DRIVER);
@@ -24,6 +33,11 @@ public class JdbcConnection {
 		}
 	}
 
+	/**
+	 * Gets the obj connection.
+	 *
+	 * @return the obj connection
+	 */
 	public Connection getObjConnection() {
 		return objConnection;
 	}
