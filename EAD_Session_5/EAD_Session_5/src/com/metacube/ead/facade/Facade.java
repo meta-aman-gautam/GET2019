@@ -10,12 +10,14 @@ import com.metacube.ead.model.Product;
 import com.metacube.ead.model.ShoppingCart;
 
 /**
- * The Class Facade {FACADE LAYER}.
+ * The Class Facade has all the business logic in the code {FACADE LAYER}.
+ * 
  * @author Aman Gautam
+ * Dated : 9/7/19
  */
 public class Facade {
 	
-	ProductDao objProductDao = FactoryPattern.getProductDao(DBTYPE.MYSQL);
+	ProductDao objProductDao = (ProductDao)FactoryPattern.getProductDao(DBTYPE.MYSQL);
 	
 	/**
 	 * Checks login status.
@@ -29,7 +31,7 @@ public class Facade {
 	}
 
 	/**
-	 * Show cart.
+	 * Shows cart of the logged in user .
 	 *
 	 * @param id the id
 	 * @return the list
@@ -39,7 +41,7 @@ public class Facade {
 	}
 
 	/**
-	 * Show product in the cart.
+	 * Show product in the cart of the logged in user .
 	 *
 	 * @return the list
 	 */

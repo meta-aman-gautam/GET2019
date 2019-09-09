@@ -2,12 +2,14 @@ package com.metacube.ead.dao;
 
 /**
  * The Class QueryDao contains all the query related to database.{DAO LAYER}
+ * 
  * @author Aman Gautam
+ * Dated : 9/7/19
  */
-public class QueryDao {
+public class QueryDao{
 	
 	/**
-	 * Check login status.
+	 * Check login status of the user in the application .
 	 *
 	 * @param id 
 	 * @param pass
@@ -32,7 +34,7 @@ public class QueryDao {
 	}
 	
 	/**
-	 * Adds the product to cart.
+	 * Adds the product to cart of the logged in user.
 	 *
 	 * @param id 
 	 * @param pid 
@@ -44,7 +46,7 @@ public class QueryDao {
 	}
 	
 	/**
-	 * Available products.
+	 * Display alll the Available products in the Shopping Store and there id for user to choose from .
 	 *
 	 * @return the string
 	 */
@@ -53,7 +55,7 @@ public class QueryDao {
 	}
 
 	/**
-	 * Show product.
+	 * Show product of the user's cart.
 	 *
 	 * @return the string
 	 */
@@ -62,7 +64,7 @@ public class QueryDao {
 	}
 
 	/**
-	 * Delete product.
+	 * Delete product in the database .
 	 *
 	 * @param id 
 	 * @param productId 
@@ -74,7 +76,7 @@ public class QueryDao {
 	}
 
 	/**
-	 * Update cart.
+	 * Update cart in the database .
 	 *
 	 * @param id 
 	 * @param productId

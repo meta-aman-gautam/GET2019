@@ -5,17 +5,17 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.jws.Oneway;
-
 import com.metacube.ead.enums.Status;
 import com.metacube.ead.factory.FactoryPattern;
 import com.metacube.ead.model.Product;
 import com.metacube.ead.model.ShoppingCart;
 
 /**
- * The Class MySqlDao.{DAO LAYER}
+ * The Class MySqlDao where all the queries are executed 
+ * {DAO LAYER}
+ * 
  * @author Aman Gautam
+ * Dated : 9/7/2019
  */
 public class MySqlDao implements BaseDao<Product> {
 
@@ -24,6 +24,7 @@ public class MySqlDao implements BaseDao<Product> {
 
 	/**
 	 * Definition of addToProductToCart method
+	 * 
 	 * @return Status{enum}
 	 */
 	@Override
@@ -94,7 +95,7 @@ public class MySqlDao implements BaseDao<Product> {
 	 * Definition of showCart method
 	 * @return List{ShoppingCart}
 	 */
-	@Override
+	@Override 
 	public List<ShoppingCart> showCart(int id) {
 		List<ShoppingCart> cartList = new ArrayList<>();
 		String queryString = objQueryDao.showCart(id);
@@ -146,12 +147,14 @@ public class MySqlDao implements BaseDao<Product> {
 				return true;
 			}
 			else {
-				return false ;
+				return false;
 			}
 		} catch (SQLException e) {
-			return false ;
+			System.out.println(e.getMessage());
+			return false;
 		}	
 		catch(Exception e) {
+			System.out.println(e.getMessage());
 			return false;
 		}
 	}

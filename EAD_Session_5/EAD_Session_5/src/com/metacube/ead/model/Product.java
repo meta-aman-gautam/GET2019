@@ -2,8 +2,9 @@ package com.metacube.ead.model;
 
 
 /**
- * The Class Product{Model Layer}.
+ * The Class Product stores the product {Model Layer}.
  * @author Aman Gautam
+ * Dated : 9/7/19
  */
 public class Product {
 

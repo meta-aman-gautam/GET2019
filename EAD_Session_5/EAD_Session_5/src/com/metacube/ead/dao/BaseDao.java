@@ -11,7 +11,7 @@ import com.metacube.ead.model.ShoppingCart;
  *
  * @param <T> the generic type
  */
-public interface BaseDao <T extends Product>{
+public interface BaseDao <T>{
 
 	/**
 	 * Adds the to product to cart.

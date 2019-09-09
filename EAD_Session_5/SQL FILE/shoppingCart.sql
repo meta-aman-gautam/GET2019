@@ -1,8 +1,10 @@
 
+
+
 create database shoppingCart ;
 use shoppingCart ;
 set foreign_key_checks =0;
-drop table product;
+drop table cart;
 
 -- product table , cart table  -use table
 
@@ -25,7 +27,8 @@ cartid INT NOT NULL,
 productid INT,
 productquantity INT,
 FOREIGN KEY(cartid) REFERENCES users(userid),
-FOREIGN KEY(productid) REFERENCES product(productid)
+FOREIGN KEY(productid) REFERENCES product(productid),
+UNIQUE KEY(cartid , productid) 
 );
 
 
@@ -36,8 +39,6 @@ INSERT into users(email,password) VALUES
 ('ankit','3456');
 
 
-
-
 INSERT into product (productid,productname,price,producttype) VALUES
 (1,'ladyfinger',50,'vegetable'),
 (2,'RealMe',5000,'Mobile'),
@@ -45,7 +46,9 @@ INSERT into product (productid,productname,price,producttype) VALUES
 
 INSERT into cart (cartid,productid,productquantity) VALUES
 (1,1,4),
-(2,1,6),
+(2,2,6),
 (1,2,8),
 (2,3,9),
 (3,2,5);
+SELECT * FROM cart;
+
