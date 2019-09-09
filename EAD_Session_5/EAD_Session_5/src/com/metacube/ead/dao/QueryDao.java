@@ -87,6 +87,5 @@ public class QueryDao{
 		return "UPDATE cart "
 				+"SET productquantity ="+qty
 				+ " WHERE productid = "+productId+" and cartid ="+id;
-	}
-	
+	}	
 }

@@ -6,9 +6,11 @@ import com.metacube.ead.model.Product;
 import com.metacube.ead.model.ShoppingCart;
 
 /**
- * The Interface BaseDao.{DAO Layer}
+ * The Interface BaseDao.{DAO Layer} has all the methods that are to used in the child class 
  * @author Aman Gautam
- *
+ * 
+ * Dated : 9/7/19
+ * 
  * @param <T> the generic type
  */
 public interface BaseDao <T>{

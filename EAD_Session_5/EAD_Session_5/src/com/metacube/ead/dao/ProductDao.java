@@ -67,5 +67,4 @@ public class ProductDao implements BaseDao<Product> {
 	public Status addToProductToCart(int id, int pId, int pQty) {
 		return objBaseDao.addToProductToCart(id, pId,pQty);
 	}
-	
 }
