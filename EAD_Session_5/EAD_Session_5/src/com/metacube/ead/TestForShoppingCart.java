@@ -18,9 +18,9 @@ public class TestForShoppingCart {
 	@Test
 	public void testForLogin() {
 		Facade objFacade =  (Facade) FactoryPattern.FactoryPatternObject("Facade");
-		assertTrue(objFacade.checkLoginStatus(1, "1234")==true);
-		assertTrue(objFacade.checkLoginStatus(2, "2345")==true);
-		assertTrue(objFacade.checkLoginStatus(3, "3456")==true);
+		assertTrue(objFacade.checkLoginStatus(1, "1234"));
+		assertTrue(objFacade.checkLoginStatus(2, "2345"));
+		assertTrue(objFacade.checkLoginStatus(3, "3456"));
 	}
 	
 	/**
@@ -29,9 +29,9 @@ public class TestForShoppingCart {
 	@Test
 	public void testForLogin_InvalidIdOrPass() {
 		Facade objFacade =  (Facade) FactoryPattern.FactoryPatternObject("Facade");
-		assertTrue(objFacade.checkLoginStatus(2, "1234")==false);
-		assertTrue(objFacade.checkLoginStatus(1, "5634")==false);
-		assertTrue(objFacade.checkLoginStatus(3, "1234")==false);
+		assertTrue(objFacade.checkLoginStatus(2, "1234"));
+		assertTrue(objFacade.checkLoginStatus(1, "5634"));
+		assertTrue(objFacade.checkLoginStatus(3, "1234"));
 	}
 	
 	/**
