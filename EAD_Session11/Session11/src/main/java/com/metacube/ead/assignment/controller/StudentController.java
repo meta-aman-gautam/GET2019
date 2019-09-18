@@ -1,9 +1,7 @@
 package com.metacube.ead.assignment.controller;
 
-import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -11,16 +9,18 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-
 import com.metacube.ead.assignment.dao.StudentDao;
 import com.metacube.ead.assignment.entity.Student;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class StudentController.
+ * The Class StudentController. Is used for the controller to 
+ * send the data to subsequent layers .On hitting the url application 
+ * directly comes to the controller via @Controller 
+ * 
+ *@author Aman Gautam
+ *
+ *Dated :18/9/19
  */
 @Controller
 public class StudentController {
@@ -44,12 +44,12 @@ public class StudentController {
 	}
 
 	/**
-	 * Submit student form.
+	 * submitStudentForm method is mapped to the url "localhost:8081/studentForm".
 	 *
-	 * @param student the student
-	 * @param result the result
-	 * @param model the model
-	 * @return the string
+	 * @param Student
+	 * @param BindingResult result 
+	 * @param model 
+	 * @return string
 	 */
 	@PostMapping("/studentForm")
 	public String submitStudentForm( @Validated Student student ,BindingResult result,Model model){
@@ -74,7 +74,7 @@ public class StudentController {
 	}
 	
 	/**
-	 * Show student.
+	 * Show student method mapped to the url "localhost:8081/showStudent".
 	 *
 	 * @return the string
 	 */
@@ -89,7 +89,7 @@ public class StudentController {
 	}
 	
 	/**
-	 * Home.
+	 * Home method which is the first method on hitting url "localhost:8081/index".
 	 *
 	 * @return the string
 	 */
