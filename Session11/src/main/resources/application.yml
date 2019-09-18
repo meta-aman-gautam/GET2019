@@ -1,0 +1,14 @@
+server:
+ port: 8080
+spring:
+ datasource:
+  driver-class-name: com.mysql.cj.jdbc.Driver
+  url: jdbc:mysql://localhost:3306/student
+  username: root
+  password: 1083543569
+ mvc:
+  view:
+   prefix: /WEB-INF/views/
+   suffix: .jsp
+home:
+ welcome: Welcome To Student Database  
