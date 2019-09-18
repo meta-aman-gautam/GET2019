@@ -47,8 +47,8 @@ public interface StudentRepository extends JpaRepository<Student, Integer> {
 	 * @return
 	 */
 	@Transactional
-    @Modifying
-    @Query(value ="Insert into student (age ,email,fatherName,firstName ,lastName,studentClass) Values (:age,:email,:fatherName,:firstName,:lastName,:studentClass)",nativeQuery = true)
-    public int insertStudent(@Param("age")Integer age, @Param("email")String email,@Param("fatherName") String fatherName,@Param("firstName")String firstName,@Param("lastName")String lastName,@Param("studentClass")Integer studentClass);	
+        @Modifying
+        @Query(value ="Insert into student (age ,email,fatherName,firstName ,lastName,studentClass) Values (:age,:email,:fatherName,:firstName,:lastName,:studentClass)",nativeQuery = true)
+        public int insertStudent(@Param("age")Integer age, @Param("email")String email,@Param("fatherName") String fatherName,@Param("firstName")String firstName,@Param("lastName")String lastName,@Param("studentClass")Integer studentClass);	
 	
 }
