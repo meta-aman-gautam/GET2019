@@ -32,10 +32,12 @@ public class StudentController {
 	String welcome;
 
 	/**
-	 * Student form.
+	 * studentForm() method is mapped to the url "localhost:8081/studentForm"
+	 * this method is used to add the attribute of the new student to the form
+	 * and return it to the studentForm.jsp
 	 *
-	 * @param model the model
-	 * @return the string
+	 * @param model 
+	 * @return String
 	 */
 	@GetMapping("/studentForm")
 	public String studentForm(Model model){
@@ -83,7 +85,7 @@ public class StudentController {
 		List<Student> studentsList = new ArrayList<>();
 		studentsList = objDao.showStudent();
 		System.out.println(studentsList.get(0).getFatherName());
-	    model.addAttribute("studentList" , studentsList);
+		model.addAttribute("studentList" , studentsList);
 		return "showStudent";
 		
 	}
@@ -98,5 +100,4 @@ public class StudentController {
 		model.addAttribute("welcome" , welcome);
 		return "index";
 	}
-
 }
