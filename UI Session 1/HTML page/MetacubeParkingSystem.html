@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <nav>
+        <a href="#AddEmployee">Add Employee</a>&nbsp;
+        <a href="#VehicleDetails">Add Vehicle</a>&nbsp;
+        <a href="#GetInTouch">Give feedback</a>&nbsp;
+        <a href="#Pricing">Pricing</a>
+    </nav>
+
+    <div align=center>
+        <img src="C:/Users/Public/Pictures/Sample Pictures/Penguins.jpg" height="300px">
+    </div>
+
+
+    <div id="AddEmployee">
+        <form name="registration" action="" method="POST">
+            <table align=center>
+                <th>
+                    <u>
+                        <h1>Add Employee Details</h1>
+                    </u>
+                    <h4>Parking Registration Form </h4>
+                </th>
+                <tr>
+                    <td>
+                        <input type="text" placeholder="Full Name" name="name" id="name" pattern="^[a-zA-Z ]{1,15} *[a-zA-Z]{1,15}$" size="50%"><br><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label id="radio">
+                            <label><input type="radio" name="gender" value="Male" checked>Male</label>
+                            <label><input type="radio" name="gender" value="Female">Female</label>
+                            <label><input type="radio" name="gender" value="Other">Other</label>
+                        </label><br><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" placeholder="Email Address" name="email" size="50%" ><br><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="password" placeholder="Password" name="psswd" size="50%" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" required><br><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="password" placeholder="Confirm Password" name="confirmPsswd"    size="50%"><br><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="tel" placeholder="Mobile No." name="mobile" size="50%" min="9" max="10"><br><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="submit" value="Register" ><br><br>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+    <div id="VehicleDetails">
+        <form action="" method="POST">
+            <table align="center">
+                <th>
+                    <u>
+                        <h1>Add Vehicle Details </h1>
+                    </u>
+                </th>
+                <tr>
+                    <td>
+                        <input type="text" placeholder="Vehicle Name" name="Vehicle Name" size="50%" required><br><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" placeholder="Vehicle Model" name="Vehicle Model" size="50%" required><br><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <select name="Vehicle Type" id="type">
+                            <option>-- choose vehicle type --</option>
+                            <option id="bicycle">BICYCLE</option>
+                            <option id="car">CAR</option>
+                            <option id="motorcycle">MOTOR CYCLE</option>
+                        </select><br><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" placeholder="Vehicle No." id="vehicleno" size="50%" required ><br><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" placeholder="Employee Registration Id" id="employeeid" readonly size="50%"><br><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <textarea name="identification" placeholder="Identification" required size="50%"></textarea><br><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="submit" value="Submit"><br><br>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div><br><br>
+
+
+
+    <div id="GetInTouch">
+        <form action="" method="POST">
+            <table align="center">
+                <th>
+                    <u>
+                        <h1>Get In Touch </h1>
+                    </u>
+                </th>
+                <tr>
+                    <td>
+                        <input type="text" placeholder="Name" name="Name" size="50%" pattern="^[a-zA-Z ]{1,15} *[a-zA-Z]{1,15}$"><br><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="email" placeholder="Email" name="Email" size="50%" ><br><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" placeholder="Subject" name="Subject" size="50%" required ><br><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <textarea name="identification" placeholder="Message(feedback)" required  size="50%"></textarea><br><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="submit" value="Send Email"><br><br>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div><br><br>
+
+    <div id="Pricing" align=center>
+        <u>
+            <h1>Pricing</h1>
+        </u>
+
+        <div>
+            <h2>Cycle</h2>
+            <div>
+                <span><strong> 100$ </strong></span><br>
+                <span>/month</span><br><br>
+            </div>
+            <span>
+                $5 Daily
+            </span><br>
+            <span>
+                $100 Monthly
+            </span><br>
+            <span>
+                $500 Yearly
+            </span><br><br>
+            <input type="button" value="Purchase Now">
+
+        </div><br><br>
+
+        <div>
+            <h2>Bike</h2>
+            <div>
+                <span><strong> 200$ </strong></span><br>
+                <span>/month</span><br><br>
+            </div>
+            <span>
+                $10 Daily
+            </span><br>
+            <span>
+                $200 Monthly
+            </span><br>
+            <span>
+                $10000 Yearly
+            </span><br><br>
+
+            <input type="button" value="Purchase Now">
+        </div><br><br>
+
+        <div>
+            <h2>Car</h2>
+            <div>
+                <span><strong> 500$ </strong></span><br>
+                <span>/month</span><br><br>
+            </div>
+            <span>
+                $20 Daily
+            </span><br>
+            <span>
+                $500 Monthly
+            </span><br>
+            <span>
+                $3500 Yearly
+            </span><br><br>
+
+            <input type="button" value="Purchase Now">
+
+        </div>
+    </div>
+</body>
+
+</html>
