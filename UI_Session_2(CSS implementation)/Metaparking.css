@@ -1,0 +1,121 @@
+.collapsible {
+  cursor: pointer;
+  padding: 4px;
+  width: 100%;
+  text-align: center;
+  font-size: 17px;
+  height: 50px;
+  padding-block-end: 20px;
+  text-align: center;
+  border-radius: 30px;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+}
+
+.heading{
+    font-family: 'Times New Roman';
+    width: 100%;
+    text-align: center;
+    margin: auto;
+    color: white;
+    padding-left: 10px;
+}
+
+.space{
+    white-space: pre-line;
+}
+.circle{
+border: 1px solid black ;
+  width: 60px;
+  height: 53px;
+  border-radius: 50%; 
+  padding-top: 20px;
+  padding-left: 15px;
+}
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .collapsible:hover {
+  border-block-color:  darkgrey ;
+  border-block-start-color: rgb(17, 17, 16)  ;
+  color: darkslategray;
+  width: 100%;
+  margin :auto;
+  border-radius: 50px;
+}
+
+/* Style the collapsible content. Note: hidden by default */
+.content {
+  padding: 60px;
+  display: none;
+  width: 34%;
+  margin: auto;
+  justify-content: center;
+  font-family: Georgia, Times, 'Times New Roman', serif;
+  padding-left: 120px;
+  padding-bottom: 100px;
+}
+
+.pricesCSS{
+    flex: 1;
+    display: inline-block;
+    border: 1px solid black ;
+    /* padding-bottom: 10px; */
+    border-radius: 10px;
+    /* width: 50%; */
+    /* margin: auto; */
+    padding: 30px;
+    background-color: bisque;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.pricesCSS h2
+{
+   padding-left: 17px;
+}
+.price{
+    width: 33%;
+    margin: auto;
+}
+
+.space{
+    border: none;
+    border-radius: 10px;
+}
+.navigation ul li{
+    display: inline;
+    margin: 10px;
+}
+
+.navigation ul li a{
+    text-decoration: none;
+    color :white;
+}
+
+.navigation{
+    text-align: center;
+    background-color: dimgrey;
+    height: 50px;
+    padding-top: 1px;
+}
+
+.footer{
+    break-before: always;
+    margin-bottom :0px;
+}
+.footerContent{
+    display: block;
+    text-align: center;
+    background-color: dimgrey;
+    height: 1px;
+    padding-bottom: 20px;
+    padding-top: 10px;
+    color: white;
+}
+.header{
+    font-family: 'Times New Roman', Times, serif;
+    text-decoration-color: cornflowerblue;
+}
+body{
+    margin: 0%;
+    font-family: 'Arial Narrow Bold', sans-serif;
+    background-color: rgb(134, 180, 176)
+}
