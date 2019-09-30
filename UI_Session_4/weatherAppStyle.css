@@ -1,0 +1,443 @@
+
+
+body{
+    background-image: url("images/bodybg.png");
+       margin: 0px;
+       padding: 0px;
+       height: 100%;
+       width: 100%;
+       overflow-x: hidden;
+       background-size: 100% 100%;
+}
+
+header div  img{
+    align-self: auto;
+}
+
+header div nav ul li{
+    
+    display: inline-flex;
+    padding-right: 20px;
+    font-family: 'Arial Narrow Bold';
+    text-decoration-color: white;
+    color: white;
+}
+
+
+.container_1{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.content_1{
+    display: inline-flex;
+}
+
+.mainheader{
+    background: url("images/homebg.png");
+}
+
+.bluebackground{
+    background: url("images/homebg.png");
+    background-size: 100% 100%;
+}
+
+section{
+    display: flex;
+    background-image :100px;
+}
+
+a{
+    color: floralwhite;
+    font-family: 'Arial';
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 780;
+}
+
+#downloadbutton{
+    color: white;
+    border: none;
+    font-weight: bolder;
+    border-spacing: 90px;
+    border-radius: 4px;
+    display: inline;
+    background-color: rgb(233, 115, 69);
+    padding: 20px;
+    padding-inline-start: 28px;
+    padding-inline-end: 28px;
+}
+
+#featuresbutton{
+    color: white;
+    border: none;
+    font-weight: bolder;
+    border-spacing: 90px;
+    border-radius: 4px;
+    display: inline;
+    background-color:rgb(58, 92, 204);
+    padding: 20px;
+    padding-inline-start: 28px;
+    padding-inline-end: 28px;
+}
+
+#text_above_bluebackground{
+    width: 100%;
+    flex-wrap: wrap;
+    padding-left: 250px;
+    padding-top: 140px;
+    color: white;
+    font-size: 45px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 900;
+}
+
+.image_above_bluebackground img{
+    height: 65%;
+    padding-left: 110px;
+    padding-top: 110px;
+    padding-bottom: 125px;
+}
+
+#text_above_bluebackground span a{
+    border-spacing: 90px;
+    border-radius: 3px;
+    display: inline;
+    background-color: rgb(233, 115, 69);
+    padding: 20px;
+    padding-inline-start: 28px;
+    padding-inline-end: 28px;
+}
+
+.bluebackground div{
+    font-weight: 900;
+    padding-left: 10px;
+    width: 250%;
+    align-content: flex;
+}
+
+
+.perfectfeatures #section1{
+    font-family: Arial ;
+    font-weight: 900;
+    color: rgb(58, 92, 204);
+    width: 100% ;
+    margin: 5%;
+    text-align: center;
+}
+
+.perfectfeatures div div{
+    white-space: pre-line;
+    align-items: center;
+}
+.perfectfeatures div span strong{
+    font-weight: 900;
+    font-size: 30px;
+}
+.perfectfeatures div span small{
+    font-size: 15px;
+    color: dimgray;
+    font-weight: 10;
+}
+
+.fontawesome{
+    width: 80%;
+    text-align: left;
+    padding-left: 10%;
+    
+}
+.fontawesome div{
+    align-items: center;
+    padding-inline-start:100px; 
+}
+.fontawesome div span i{
+    font-size: 50px;
+    color: coral;
+}
+
+.fontawesome div span strong{ 
+    color: rgba(0, 0, 0, 0.76);
+    font-weight: bold;
+    padding-right: 20%;
+    font-size: 25px;
+    align-content: space-around;
+    font-family: sans-serif;
+}
+
+.fontawesome div span{
+    white-space: pre-line;
+    align-content: space-around;
+    font-family: sans-serif;
+}
+
+.fontawesome div span span{
+    font-family: Arial;
+    color: dimgrey;
+    font-size: 15px;
+    font-weight: lighter;
+}
+
+.drag div{
+    display: inline-block;
+}
+
+.drag #image1 {
+    transform: scale(.9) translate(330px,70px) skewY(5deg);
+    }
+   
+    
+.drag #image2 {
+    transform: scale(.9) translate(-90px,23px);
+    }
+        
+.drag #image3 {
+        transform: scale(.9) translate(620px,70px) skewY(-5deg);
+        }
+
+.Screenshots #section1{
+    font-family: Arial ;
+    font-weight: 900;
+    color: rgb(58, 92, 204);
+    width: 100% ;
+    margin: 5%;
+    text-align: center;
+}
+        
+.Screenshots div div{
+    white-space: pre-line;
+    align-items: center;
+}
+
+.Screenshots div span strong{
+    font-weight: 900;
+    font-size: 30px;
+}
+
+.Screenshots div span small{
+    font-size: 15px;
+    color: dimgray;
+    font-weight: 10;
+}
+       
+
+.icon {
+    color: rgb(221, 135, 74);
+    font-size: 60px;
+    padding-right: 40px;
+}
+
+.heading_text_p {
+    color: darkgray;
+    margin-left: 27%;
+}
+
+.cloud_section {
+    display: flex;
+    padding-left: 23%;
+
+    margin-top: 8%;
+    margin-bottom: 10%;
+}
+
+.cloud_img {
+    display: flex;
+    flex-direction: column;
+    margin-left: 12%;
+}
+
+.cloud_span {
+    margin-top: 5%;
+    font-size: 35px;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+    color: rgb(39, 38, 38);
+}
+
+.cloud_p {
+    font-size: 25px;
+    color: darkgray;
+    width: 65%;
+}
+
+.sun {
+  margin-right: 300px;
+  padding-left: 0;
+}
+
+.cloud_img_margin {
+    margin-left: 250px;
+}
+
+#image1 {
+    transform: scale(.7) translate(260px,0px) skewY(5deg);
+    }
+    
+    #image2 {
+    transform: scale(.85) translate(50px,0px) skewY(2deg);
+    }
+    
+    #image3 {
+    transform: translate(-630px,0)
+    }
+    
+    #image4 {
+    transform: scale(.85) translate(30px,0px) skewY(-2deg);
+    }
+    
+    #image5 {
+    transform: scale(.7) translate(740px,0px) skewY(-5deg);
+    }
+
+    .flex_container {
+        margin-top: 10%;
+        margin-bottom: 10%;
+        display: flex;
+    }
+
+    .reviews {
+        display: flex;
+        margin-top: 5%;
+    }
+
+    .reviews_p {
+
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 20px;
+        font-weight: bold;
+        color: rgb(39, 38, 38);
+    }
+
+    .reviews_article1 {
+
+        margin-right: 60px;
+
+    }
+  .reviews {
+      margin-left: 330px;
+  }
+ 
+
+    .reviews_span {
+        font-weight: bold;
+    }
+
+    .icon_left {
+        float: left;
+        color: #6388fa;
+    }
+
+    .icon_right {
+        float: right;
+        color: #6388fa;
+    }
+
+    .downlode {
+        display: flex;
+        background-image: url('images/downloadbg.png');
+        height: 300px;
+        padding-left: 220px;
+        padding-top: 100px;
+        margin-top: 100px;
+    }
+
+    .downlode_app {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .googleplay {
+        display: flex;
+    }
+
+    #downlode_app_p {
+
+        color: white;
+        font-size: 38px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        margin-right: 120px;
+    }
+
+    #downlode_app_span {
+        color: white;
+        font-size: 15px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
+    }
+
+
+    #appstor {
+        margin-right: 10px;
+    }
+
+    #footer {
+        background-color: rgb(39, 38, 38);
+        height: 150px;
+        padding : 0px 300px;
+    }
+
+  
+
+
+    #all_right {
+        text-align: center;
+        margin-top: 32px;
+        color: darkgray;
+        font-family: Arial ;
+        font-size: 13px;
+    }
+
+    #footer_id{
+        border-bottom: 0.5px solid rgb(136, 133, 133);
+    }
+
+    .navigation div{
+        display: inline-flex;
+        justify-content: space-between;
+        padding-bottom: 40px;
+    }
+
+
+
+    footer div  img{
+        align-self: auto;
+    }
+    
+    .navigation_link{
+        padding-inline-end: 165px;
+        padding-inline-start: 165px;
+    }
+
+
+    footer div div nav ul li{
+        
+        display: inline-flex;
+        padding-right: 20px;
+        font-family: 'Arial Narrow Bold';
+        color: bisque;
+    }
+
+    .Reviews_section #section1{
+        font-family: Arial ;
+        font-weight: 900;
+        color: rgb(58, 92, 204);
+        width: 100% ;
+        margin: 5%;
+        text-align: center;
+    }
+    
+    .Reviews_section div div{
+        white-space: pre-line;
+        align-items: center;
+    }
+    .Reviews_section div span strong{
+        font-weight: 800;
+        font-size: 30px;
+    }
+    .Reviews_section div span small{
+        font-size: 15px;
+        color: dimgray;
+        font-weight: 10;
+    }
+
+  
