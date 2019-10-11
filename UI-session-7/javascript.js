@@ -1,7 +1,4 @@
-var employeeName, employeeGender, employeeEmail, 
-employeePassword, 
-employeeMatchPassword, employeeNumber,currentField,
-currentForm,moneypass;
+var currentForm, currentField;
 
 
 /* event listener for enter key */
@@ -18,8 +15,8 @@ function registerationForm() {
 
     document.body.style.backgroundColor = "#7FDBFF";
     employeeName = document.getElementById("empName");
-    document.getElementById("addEmp").style.display ="none";
-    document.getElementById("u_Registration").style.display ="block";
+    document.getElementById("addEmp").style.display = "none";
+    document.getElementById("u_Registration").style.display = "block";
 
     document.getElementById("label").style.display = "block";
     employeeName.style.display = "block";
@@ -51,14 +48,15 @@ function vehicleForm() {
     document.body.style.backgroundColor = "#FF851B";
     vehicleName = document.getElementById("vehName");
 
-    document.getElementById("u_Registration").style.display ="none";
-    document.getElementById("v_Registration").style.display ="block";
-    
+    document.getElementById("u_Registration").style.display = "none";
+    document.getElementById("v_Registration").style.display = "block";
+
     label.innerHTML = "may I know the name of your vehicle";
     vehicleName.style.display = "block";
 
     currentField = "vehName";
 }
+
 
 /* opens up the plan and pricing form */
 function planForm() {
@@ -79,8 +77,13 @@ function planForm() {
 
 /* on submit of plan and pricing form */
 function submitForm() {
-    document.getElementById("p_Registration").style.display ="none";
-    label.innerHTML = "Thank you for registering " +document.getElementById("ename").value +" Kindly Pay ->"+moneypass;
+
+    let moneypass = '';
+    document.getElementById("p_Registration").style.display = "none";
+    document.getElementsByName("passtype").forEach(function (item) { if (item.checked) { moneypass = item.nextElementSibling.innerText } })
+    moneypass = moneypass + " " + document.getElementById("currency").value;
+    label.innerHTML = "Thank you for registering " + document.getElementById("ename").value + " Kindly Pay:" + moneypass;
+
 
     document.getElementById("plans").style.display = "none";
     document.getElementById("submit").style.display = "none";
@@ -89,7 +92,7 @@ function submitForm() {
 /* validating password against weak , moderate and strong */
 function validatePassword() {
 
-    var employeePassword = document.getElementById("epass").value;
+    let employeePassword = document.getElementById("epass").value;
     document.getElementById("epass").style.borderWidth = "thick";
     if (employeePassword.length < 8) {
         document.getElementById("epass").style.borderColor = "red";
@@ -102,8 +105,8 @@ function validatePassword() {
     } else {
         document.getElementById("epass").style.borderColor = "green";
         document.getElementById("error").innerHTML = " ";
+        return true;
     }
-
 }
 
 
@@ -124,7 +127,7 @@ function onBlur() {
     switch (currentField) {
 
         case "name":
-            var employeeName = document.getElementById("ename").value;
+            let employeeName = document.getElementById("ename").value;
 
             if (!(/^[A-z ]{2,}$/.test(employeeName))) {
                 document.getElementById("error").innerHTML = "please enter valid name";
@@ -132,7 +135,6 @@ function onBlur() {
             } else {
                 document.getElementById("error").innerHTML = " ";
             }
-
 
             label.innerHTML = "Hi " + employeeName + " may I know your gender?";
 
@@ -144,7 +146,7 @@ function onBlur() {
 
         case "gender":
 
-            var employeeGender = document.getElementsByName("egender");
+            let employeeGender = document.getElementsByName("egender");
 
             if (!employeeGender[0].checked && !employeeGender[1].checked) {
                 document.getElementById("error").innerHTML = "Please select gender";
@@ -161,7 +163,7 @@ function onBlur() {
             break;
 
         case "email":
-            var employeeEmail = document.getElementById("eemail").value;
+            let employeeEmail = document.getElementById("eemail").value;
 
             if (!(/^[A-z]+@[A-z]+\.[A-z]+$/.test(employeeEmail))) {
                 document.getElementById("error").innerHTML = "please enter valid email address";
@@ -172,31 +174,23 @@ function onBlur() {
             label.innerHTML = "Please choose a password";
             document.getElementById("empEmail").style.display = "none";
             document.getElementById("empPass").style.display = "block";
+            document.getElementById("empCnfrmPass").style.display = "block";
             currentField = "password";
 
             break;
 
         case "password":
-            var employeePassword = document.getElementById("epass").value;
+            let employeePassword = document.getElementById("epass").value;
 
             if (!(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/.test(employeePassword))) {
-                document.getElementById("error").innerHTML = "password should contains Uppercase, Lowercase, Numeric and min 8 characters";
+                document.getElementById("error").innerHTML = "password should contains Uppercase, Lowercase,Special character,Numeric and min 8 characters";
                 return false;
             } else {
                 document.getElementById("error").innerHTML = " ";
             }
 
-            label.innerHTML = "Lets check if you remember your password";
-
-            document.getElementById("empPass").style.display = "none";
-            document.getElementById("empCnfrmPass").style.display = "block";
-            currentField = "cnfrmpasswrd";
-
-            break;
-
-        case "cnfrmpasswrd":
-            var employeePassword = document.getElementById("epass").value;
-            var employeeMatchPassword = document.getElementById("ecnfrmpass").value;
+            employeePassword = document.getElementById("epass").value;
+            let employeeMatchPassword = document.getElementById("ecnfrmpass").value;
 
             if (employeePassword != employeeMatchPassword) {
                 document.getElementById("error").innerHTML = "password doesn't match";
@@ -205,14 +199,11 @@ function onBlur() {
                 document.getElementById("error").innerHTML = " ";
             }
             label.innerHTML = "please enter your contact number  ...";
+            document.getElementById("empPass").style.display = "none";
             document.getElementById("empCnfrmPass").style.display = "none";
             document.getElementById("empContact").style.display = "block";
             document.getElementById("next1").style.display = "block";
             currentField = "contact";
-
-            break;
-
-        default:
     }
 
 
@@ -222,10 +213,10 @@ function onBlur() {
 /* switch case for vehicle  form for switching input fields */
 function onBlurForm2() {
 
+    let vehicleName = document.getElementById("vname").value;;
     switch (currentField) {
 
         case "vehName":
-            var vehicleName = document.getElementById("vname").value;
             if (vehicleName == "") {
                 document.getElementById("error").innerHTML = "required";
                 return;
@@ -239,14 +230,14 @@ function onBlurForm2() {
             break;
 
         case "vehType":
-            var vehicleType = document.getElementById("vtype").value;
-            var vehicleName = document.getElementById("vname").value;
+            debugger;
+            let vehicleType = document.getElementById("vtype").value;
 
             if (vehicleType == "") {
                 document.getElementById("error").innerHTML = "required";
                 return;
             }
-            document.getElementById("error").innerHTML = " ";
+            document.getElementById("error").innerHTML = "";
 
             document.getElementById("vehType").style.display = "none";
             label.innerHTML = "Mention the number of " + vehicleName;
@@ -256,8 +247,8 @@ function onBlurForm2() {
             break;
 
         case "vehNumber":
-            var vehNumber = document.getElementById("vnumber").value;
-            var vehicleName = document.getElementById("vname").value;
+            let vehNumber = document.getElementById("vnumber").value;
+
 
             if (vehNumber == "") {
                 document.getElementById("error").innerHTML = "required";
@@ -271,9 +262,6 @@ function onBlurForm2() {
             document.getElementById("next2").style.display = "block";
             currentField = "vehDescription";
 
-            break;
-
-        default:
     }
 
 
@@ -286,44 +274,30 @@ function onBlurForm3() {
     switch (currentField) {
 
         case "currency":
-            var currency = document.getElementById("currency").value;
-            var vehicleType = document.getElementById("vtype").value;
+            currency = document.getElementById("currency").value;
+            let vehicleType = document.getElementById("vtype").value;
 
             document.getElementById("currType").style.display = "none";
-            label.innerHTML = "choose paln for your " + vehicleType;
-            debugger;
-            if(document.getElementById('daily').checked){
-                moneypass = document.getElementById("daily").innerText+" "+document.getElementById("currency").value;
-            }
-            else if(document.getElementById('monthly').checked){
-                moneypass = document.getElementById("monthly").innerText+" "+document.getElementById("currency").value;
-            }
-            else{
-                moneypass = document.getElementById("yearly").innerText+" "+document.getElementById("currency").value;
-            }
+            label.innerHTML = "choose plan for your " + vehicleType;
+
             document.getElementById("plans").style.display = "block";
             document.getElementById("submit").style.display = "block";
             currentField = "plan";
 
             break;
 
-        default:
     }
 
 }
 
-
 /* showing available plans according to vehicle selected */
 function showPrice() {
 
-    currency = document.getElementById("currency").value;
+    let curr = document.getElementById("currency").value;
     plan = document.getElementById("plans").value;
 
     plans.style.display = "block";
-    var v = vehType;
-    var daily = 5;
-    var monthly = 100;
-    var yearly = 500;
+    let v = document.getElementsByName("vehicleType")[0].children[0].value, daily = 5, monthly = 100, yearly = 500;
 
     if (v == "Motocycle") {
         daily = 10;
@@ -335,8 +309,7 @@ function showPrice() {
         yearly = 3500;
     }
 
-    var cur = currency;
-    switch (cur) {
+    switch (curr) {
         case "INR":
             document.getElementById("daily").innerHTML = daily;
             document.getElementById("monthly").innerHTML = monthly;
@@ -351,6 +324,6 @@ function showPrice() {
             document.getElementById("daily").innerHTML = (daily / 0.68).toFixed(2);
             document.getElementById("monthly").innerHTML = (monthly / 0.68).toFixed(2);
             document.getElementById("yearly").innerHTML = (yearly / 0.68).toFixed(2);
-            break;
+
     }
 }
