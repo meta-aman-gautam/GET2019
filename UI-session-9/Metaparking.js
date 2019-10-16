@@ -26,7 +26,7 @@ var Employee = /** @class */ (function () {
         return this.employeeGender;
     };
     Employee.prototype.getEmployeeEmail = function () {
-        return this.employeeGender;
+        return this.employeeEmail;
     };
     Employee.prototype.setEmployeeName = function (eName) {
         this.employeeName = eName;
@@ -45,35 +45,65 @@ var Employee = /** @class */ (function () {
     };
     return Employee;
 }());
-// class Vehicles{
-//     private vehicleName
-//     private vehicleType
-//     private  vehicleDescription
-//     private employeeGender
-//     private employeeEmail
-//     constructor(eName :string,eContact:string ,ePassword:String ,eGender :string,eEmail:string){
-//         this.employeeName = eName ;
-//         this.emaployeeContact = eContact;
-//         this.employeePassword = ePassword;
-//         this.employeeGender = eGender;
-//         this.employeeEmail = eEmail;
-//     }
-//     setEmployeeName(eName:string) {
-//         this.employeeName = eName ;
-//     }
-//     setEmployeeContact(eContact) {
-//         this.emaployeeContact = eContact ;
-//     }
-//     setEmployeePassword(ePassword) {
-//         this.employeePassword = ePassword ;
-//     }
-//     setEmployeeGender(eGender) {
-//         this.employeeGender = eGender ;
-//     }
-//     setEmployeeEmail(eEmail) {
-//         this.employeeEmail = eEmail ;
-//     }
-// }
+var Vehicles = /** @class */ (function () {
+    function Vehicles(vName, vType, vDescription, vNumber) {
+        this.vehicleName = vName;
+        this.vehicleType = vType;
+        this.vehicleDescription = vDescription;
+        this.vehicleNo = vNumber;
+    }
+    Vehicles.prototype.setVehicleName = function (vName) {
+        this.vehicleName = vName;
+    };
+    Vehicles.prototype.setVehicleType = function (vType) {
+        this.vehicleType = vType;
+    };
+    Vehicles.prototype.setVehicleDescription = function (vDescription) {
+        this.vehicleDescription = vDescription;
+    };
+    Vehicles.prototype.setVehicleNumber = function (vNumber) {
+        this.vehicleNo = vNumber;
+    };
+    Vehicles.prototype.getVehicleName = function () {
+        return this.vehicleName;
+    };
+    Vehicles.prototype.getVehicleType = function () {
+        return this.vehicleType;
+    };
+    Vehicles.prototype.getVehicleDescription = function () {
+        return this.vehicleDescription;
+    };
+    Vehicles.prototype.getVehicleNumber = function () {
+        return this.vehicleNo;
+    };
+    return Vehicles;
+}());
+var Plan = /** @class */ (function () {
+    function Plan(curr, pType, pPlan) {
+        this.currency = curr;
+        this.passType = pType;
+        this.passPlan = pPlan;
+    }
+    Plan.prototype.setCurrency = function (curr) {
+        this.currency = curr;
+    };
+    Plan.prototype.setPlanType = function (pType) {
+        this.passType = pType;
+    };
+    Plan.prototype.setPassPlan = function (pPlan) {
+        this.passPlan = pPlan;
+    };
+    Plan.prototype.getCurrency = function () {
+        return this.currency;
+    };
+    Plan.prototype.getPlanType = function () {
+        return this.passType;
+    };
+    Plan.prototype.getPassPlan = function () {
+        return this.passPlan;
+    };
+    return Plan;
+}());
 /* onclick of add employee
     shows name input */
 function registerationForm() {
@@ -97,17 +127,18 @@ function vehicleForm() {
     }
     else {
         document.getElementById("error").innerHTML = " ";
+        Employee.prototype.setEmployeeContact(employeeContact);
     }
     document.getElementById("empContact").style.display = "none";
     document.getElementById("next1").style.display = "none";
     currentField = "vehName";
     currentForm = 2;
     document.body.style.backgroundColor = "#FF851B";
-    var vehicleName = document.getElementById("vehName");
+    var vehicleName = document.getElementById("vname").value;
     document.getElementById("u_Registration").style.display = "none";
     document.getElementById("v_Registration").style.display = "block";
     document.getElementById('label').innerHTML = "may I know the name of your vehicle";
-    vehicleName.style.display = "block";
+    document.getElementById("vehName").style.display = "block";
 }
 /* opens up the plan and pricing form */
 function planForm() {
@@ -116,6 +147,7 @@ function planForm() {
     document.body.style.backgroundColor = "#DDDDDD";
     document.getElementById("vehDescription").style.display = "none";
     document.getElementById("next2").style.display = "none";
+    Vehicles.prototype.setVehicleDescription(document.getElementById('videntity').value);
     document.getElementById('label').innerHTML = "choose currency for your plan";
     document.getElementById("currType").style.display = "block";
     currentField = "currency";
@@ -128,7 +160,11 @@ function submitForm() {
     document.getElementsByName("passtype").forEach(function (item) { if (item.checked) {
         moneypass = item.nextElementSibling.innerText;
     } });
-    moneypass = moneypass + " " + document.getElementById("currency").value;
+    Plan.prototype.setPassPlan(moneypass);
+    document.getElementsByName("passtype").forEach(function (item) { if (item.checked) {
+        Plan.prototype.setPlanType(item.value);
+    } });
+    moneypass = moneypass + " " + Plan.prototype.getCurrency();
     document.getElementById('label').innerHTML = "Thank you for registering " + Employee.prototype.getEmployeeName() + " Kindly Pay:" + moneypass;
     document.getElementById("plans").style.display = "none";
     document.getElementById("submit").style.display = "none";
@@ -186,14 +222,15 @@ function onBlur() {
                 return false;
             }
             else {
-                var gender = function (item) { if (document.getElementById('male-radio').value == "on") {
-                    item = "Male";
-                } };
-                Employee.prototype.setEmployeeGender(gender);
+                var gender_1;
+                document.getElementsByName('egender').forEach(function (item) { if (item.checked) {
+                    gender_1 = item;
+                    Employee.prototype.setEmployeeGender(gender_1.value);
+                } });
+                Employee.prototype.setEmployeeGender(gender_1.value);
                 document.getElementById("error").innerHTML = "";
             }
-            alert(gender);
-            label.innerHTML = " You must be having a email Id";
+            document.getElementById('label').innerHTML = " You must be having a email Id";
             document.getElementById("empGender").style.display = "none";
             document.getElementById("empEmail").style.display = "block";
             currentField = "email";
@@ -206,8 +243,9 @@ function onBlur() {
             }
             else {
                 document.getElementById("error").innerHTML = " ";
+                Employee.prototype.setEmployeeEmail(employeeEmail);
             }
-            label.innerHTML = "Please choose a password";
+            document.getElementById('label').innerHTML = "Please choose a password";
             document.getElementById("empEmail").style.display = "none";
             document.getElementById("empPass").style.display = "block";
             document.getElementById("empCnfrmPass").style.display = "block";
@@ -231,7 +269,8 @@ function onBlur() {
             else {
                 document.getElementById("error").innerHTML = " ";
             }
-            label.innerHTML = "please enter your contact number  ...";
+            Employee.prototype.setEmployeePassword(employeePassword);
+            document.getElementById("label").innerHTML = "please enter your contact number  ...";
             document.getElementById("empPass").style.display = "none";
             document.getElementById("empCnfrmPass").style.display = "none";
             document.getElementById("empContact").style.display = "block";
@@ -241,15 +280,17 @@ function onBlur() {
 }
 /* switch case for vehicle  form for switching input fields */
 function onBlurForm2() {
-    var vehicleName = document.getElementById("vname").value;
-    ;
     switch (currentField) {
         case "vehName":
+            var vehicleName = document.getElementById("vname").value;
             if (vehicleName == "") {
                 document.getElementById("error").innerHTML = "required";
                 return;
             }
-            document.getElementById("error").innerHTML = " ";
+            else {
+                document.getElementById("error").innerHTML = " ";
+                Vehicles.prototype.setVehicleName(vehicleName);
+            }
             document.getElementById("vehName").style.display = "none";
             document.getElementById('label').innerHTML = " whats the type of " + vehicleName;
             document.getElementById("vehType").style.display = "block";
@@ -263,6 +304,7 @@ function onBlurForm2() {
                 return;
             }
             document.getElementById("error").innerHTML = "";
+            Vehicles.prototype.setVehicleType(vehicleType);
             document.getElementById("vehType").style.display = "none";
             document.getElementById('label').innerHTML = "Mention the number of " + vehicleName;
             document.getElementById("vehNumber").style.display = "block";
@@ -275,6 +317,7 @@ function onBlurForm2() {
                 return;
             }
             document.getElementById("error").innerHTML = " ";
+            Vehicles.prototype.setVehicleNumber(vehNumber);
             document.getElementById("vehNumber").style.display = "none";
             document.getElementById('label').innerHTML = "Tell something about " + vehicleName;
             document.getElementById("vehDescription").style.display = "block";
@@ -287,8 +330,9 @@ function onBlurForm3() {
     switch (currentField) {
         case "currency":
             var currency = document.getElementById("currency").value;
-            var vehicleType = document.getElementById("vtype").value;
+            var vehicleType = Vehicles.prototype.getVehicleType();
             document.getElementById("currType").style.display = "none";
+            Plan.prototype.setCurrency(currency);
             document.getElementById("label").innerHTML = "choose plan for your " + vehicleType;
             document.getElementById("plans").style.display = "block";
             document.getElementById("submit").style.display = "block";
@@ -301,13 +345,13 @@ function showPrice() {
     var curr = document.getElementById("currency").value;
     var plan = document.getElementById("plans").value;
     document.getElementById('plans').style.display = "block";
-    var v = document.getElementsByName("vehicleType")[0].children[0].value, daily = 5, monthly = 100, yearly = 500;
-    if (v == "Motocycle") {
+    var vtype = Vehicles.prototype.getVehicleType(), daily = 5, monthly = 100, yearly = 500;
+    if (vtype == "Motocycle") {
         daily = 10;
         monthly = 200;
         yearly = 1000;
     }
-    else if (v == "Car") {
+    else if (vtype == "Car") {
         daily = 20;
         monthly = 500;
         yearly = 3500;

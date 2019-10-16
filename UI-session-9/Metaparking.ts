@@ -42,7 +42,7 @@ class Employee{
         return this.employeeGender ;
     }
     getEmployeeEmail() {
-        return this.employeeGender  ;
+        return this.employeeEmail  ;
     }
 
     setEmployeeName(eName:string) {
@@ -65,39 +65,91 @@ class Employee{
 }
 
 
-// class Vehicles{
-//     private vehicleName
-//     private vehicleType
-//     private  vehicleDescription
-//     private employeeGender
-//     private employeeEmail
 
-//     constructor(eName :string,eContact:string ,ePassword:String ,eGender :string,eEmail:string){
-//         this.employeeName = eName ;
-//         this.emaployeeContact = eContact;
-//         this.employeePassword = ePassword;
-//         this.employeeGender = eGender;
-//         this.employeeEmail = eEmail;
-//     }
+class Vehicles{
+    private vehicleName :String
+    private vehicleType :String
+    private vehicleNo : String
+    private  vehicleDescription: BigInteger
+    
 
-//     setEmployeeName(eName:string) {
-//         this.employeeName = eName ;
-//     }
+    constructor(vName ,vType ,vDescription ,vNumber){
+        this.vehicleName = vName ;
+        this.vehicleType = vType;
+        this.vehicleDescription = vDescription;
+        this.vehicleNo = vNumber;
+     
+    }
 
-//     setEmployeeContact(eContact) {
-//         this.emaployeeContact = eContact ;
-//     }
+    setVehicleName(vName) {
+        this.vehicleName = vName ;
+    }
 
-//     setEmployeePassword(ePassword) {
-//         this.employeePassword = ePassword ;
-//     }
-//     setEmployeeGender(eGender) {
-//         this.employeeGender = eGender ;
-//     }
-//     setEmployeeEmail(eEmail) {
-//         this.employeeEmail = eEmail ;
-//     }
-// }
+    setVehicleType(vType) {
+        this.vehicleType = vType ;
+    }
+
+    setVehicleDescription(vDescription) {
+        this.vehicleDescription = vDescription ;
+    }
+    setVehicleNumber(vNumber) {
+        this.vehicleNo = vNumber ;
+    }
+
+
+    getVehicleName() {
+        return this.vehicleName  ;
+    }
+
+    getVehicleType() {
+        return this.vehicleType  ;
+    }
+
+    getVehicleDescription() {
+        return this.vehicleDescription ;
+    }
+    getVehicleNumber() {
+        return this.vehicleNo ;
+    }
+    
+}
+
+
+class Plan{
+    private currency :String
+    private passType :String
+    private passPlan : String
+
+    constructor(curr ,pType ,pPlan){
+        this.currency = curr ;
+        this.passType = pType;
+        this.passPlan = pPlan;
+    }
+
+    setCurrency(curr) {
+        this.currency = curr ;
+    }
+
+    setPlanType(pType) {
+        this.passType = pType ;
+    }
+
+    setPassPlan(pPlan) {
+        this.passPlan = pPlan ;
+    }
+
+    getCurrency() {
+        return this.currency ;
+    }
+
+    getPlanType() {
+        return  this.passType ;
+    }
+
+    getPassPlan() {
+        return this.passPlan ;
+    }   
+}
 
 
 /* onclick of add employee
@@ -127,6 +179,7 @@ function vehicleForm() {
         return false;
     } else {
         document.getElementById("error").innerHTML = " ";
+        Employee.prototype.setEmployeeContact(employeeContact);
     }
 
     document.getElementById("empContact").style.display = "none";
@@ -136,16 +189,15 @@ function vehicleForm() {
     currentForm = 2;
 
     document.body.style.backgroundColor = "#FF851B";
-    let vehicleName = document.getElementById("vehName");
-
+    let vehicleName = (<HTMLInputElement>document.getElementById("vname")).value;
+ 
     document.getElementById("u_Registration").style.display = "none";
     document.getElementById("v_Registration").style.display = "block";
 
     (<HTMLInputElement>document.getElementById('label')).innerHTML = "may I know the name of your vehicle";
-    vehicleName.style.display = "block";
+    document.getElementById("vehName").style.display = "block"; 
 
 }
-
 
 /* opens up the plan and pricing form */
 function planForm() {
@@ -154,8 +206,10 @@ function planForm() {
     document.getElementById("p_Registration").style.display = "block";
 
     document.body.style.backgroundColor = "#DDDDDD";
+
     document.getElementById("vehDescription").style.display = "none";
     document.getElementById("next2").style.display = "none";
+    Vehicles.prototype.setVehicleDescription((<HTMLInputElement>document.getElementById('videntity')).value);
 
     (<HTMLInputElement>document.getElementById('label')).innerHTML = "choose currency for your plan";
     document.getElementById("currType").style.display = "block";
@@ -169,8 +223,11 @@ function submitForm() {
 
     let moneypass = '';
     document.getElementById("p_Registration").style.display = "none";
-    document.getElementsByName("passtype").forEach(function (item) { if ((<HTMLInputElement>item).checked) { moneypass = (<HTMLInputElement>item.nextElementSibling).innerText } })
-    moneypass = moneypass + " " + (<HTMLInputElement>document.getElementById("currency")).value;
+    document.getElementsByName("passtype").forEach(function (item) { if ((<HTMLInputElement>item).checked) { moneypass = (<HTMLInputElement>item.nextElementSibling).innerText } });
+    Plan.prototype.setPassPlan(moneypass);   
+    document.getElementsByName("passtype").forEach(function(item){if(item.checked){Plan.prototype.setPlanType(item.value)}});
+    
+    moneypass = moneypass + " " + Plan.prototype.getCurrency();
     (<HTMLInputElement>document.getElementById('label')).innerHTML= "Thank you for registering " + Employee.prototype.getEmployeeName() + " Kindly Pay:" + moneypass;
 
 
@@ -223,8 +280,9 @@ function onBlur() {
                 return false;
             } else {
                 document.getElementById("error").innerHTML = " ";
+               
             }
-
+            
             label.innerHTML = "Hi " + Employee.prototype.getEmployeeName() + " may I know your gender?";
 
             document.getElementById("empName").style.display = "none";
@@ -241,14 +299,15 @@ function onBlur() {
                 document.getElementById("error").innerHTML = "Please select gender";
                 return false;
             } else {
-                var gender = function(item){if((<HTMLInputElement>document.getElementById('male-radio')).value=="on"){item="Male";}}
+                let gender ;
+                document.getElementsByName('egender').forEach(function(item){if(item.checked){gender= item ; Employee.prototype.setEmployeeGender(gender.value);}})
+                
 
-                Employee.prototype.setEmployeeGender(gender);
+                Employee.prototype.setEmployeeGender(gender.value);
                 document.getElementById("error").innerHTML = "";
             }
 
-            alert(gender);
-            label.innerHTML = " You must be having a email Id";
+            document.getElementById('label').innerHTML = " You must be having a email Id";
 
             document.getElementById("empGender").style.display = "none";
             document.getElementById("empEmail").style.display = "block";
@@ -256,15 +315,18 @@ function onBlur() {
             break;
 
         case "email":
+          
             let employeeEmail = (<HTMLInputElement>document.getElementById("eemail")).value;
-
             if (!(/^[A-z]+@[A-z]+\.[A-z]+$/.test(employeeEmail))) {
                 document.getElementById("error").innerHTML = "please enter valid email address";
                 return false;
             } else {
                 document.getElementById("error").innerHTML = " ";
+                Employee.prototype.setEmployeeEmail(employeeEmail);
             }
-            label.innerHTML = "Please choose a password";
+
+            
+            document.getElementById('label').innerHTML = "Please choose a password";
             document.getElementById("empEmail").style.display = "none";
             document.getElementById("empPass").style.display = "block";
             document.getElementById("empCnfrmPass").style.display = "block";
@@ -274,7 +336,7 @@ function onBlur() {
 
         case "password":
             let employeePassword = (<HTMLInputElement>document.getElementById("epass")).value;
-
+            
             if (!(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/.test(employeePassword))) {
                 document.getElementById("error").innerHTML = "password should contains Uppercase, Lowercase,Special character,Numeric and min 8 characters";
                 return false;
@@ -291,7 +353,9 @@ function onBlur() {
             } else {
                 document.getElementById("error").innerHTML = " ";
             }
-            label.innerHTML = "please enter your contact number  ...";
+
+            Employee.prototype.setEmployeePassword(employeePassword);
+            document.getElementById("label").innerHTML = "please enter your contact number  ...";
             document.getElementById("empPass").style.display = "none";
             document.getElementById("empCnfrmPass").style.display = "none";
             document.getElementById("empContact").style.display = "block";
@@ -306,15 +370,20 @@ function onBlur() {
 /* switch case for vehicle  form for switching input fields */
 function onBlurForm2() {
 
-    let vehicleName = (<HTMLInputElement>document.getElementById("vname")).value;;
+    
     switch (currentField) {
 
         case "vehName":
+            let vehicleName = (<HTMLInputElement>document.getElementById("vname")).value;
             if (vehicleName == "") {
                 document.getElementById("error").innerHTML = "required";
                 return;
             }
-            document.getElementById("error").innerHTML = " ";
+            else{
+                document.getElementById("error").innerHTML = " ";
+                Vehicles.prototype.setVehicleName(vehicleName);
+            }
+            
             document.getElementById("vehName").style.display = "none";
             (<HTMLInputElement>document.getElementById('label')).innerHTML = " whats the type of " + vehicleName;
             document.getElementById("vehType").style.display = "block";
@@ -331,6 +400,7 @@ function onBlurForm2() {
                 return;
             }
             document.getElementById("error").innerHTML = "";
+            Vehicles.prototype.setVehicleType(vehicleType);
 
             document.getElementById("vehType").style.display = "none";
             document.getElementById('label').innerHTML = "Mention the number of " + vehicleName;
@@ -341,14 +411,13 @@ function onBlurForm2() {
 
         case "vehNumber":
             let vehNumber = (<HTMLInputElement>document.getElementById("vnumber")).value;
-
-
+          
             if (vehNumber == "") {
                 document.getElementById("error").innerHTML = "required";
                 return;
             }
             document.getElementById("error").innerHTML = " ";
-
+            Vehicles.prototype.setVehicleNumber(vehNumber);
             document.getElementById("vehNumber").style.display = "none";
             document.getElementById('label').innerHTML = "Tell something about " + vehicleName;
             document.getElementById("vehDescription").style.display = "block";
@@ -368,9 +437,9 @@ function onBlurForm3() {
 
         case "currency":
             let currency = (<HTMLInputElement>document.getElementById("currency")).value;
-            let vehicleType =  (<HTMLInputElement>document.getElementById("vtype")).value;
-
+            let vehicleType =  Vehicles.prototype.getVehicleType();
             document.getElementById("currType").style.display = "none";
+            Plan.prototype.setCurrency(currency);
             (<HTMLInputElement>document.getElementById("label")).innerHTML = "choose plan for your " + vehicleType;
 
             document.getElementById("plans").style.display = "block";
@@ -387,16 +456,18 @@ function onBlurForm3() {
 function showPrice() {
 
     let curr = (<HTMLInputElement>document.getElementById("currency")).value;
+    
     let plan = (<HTMLInputElement>document.getElementById("plans")).value;
+    
 
     document.getElementById('plans').style.display = "block";
-    let v = (<HTMLInputElement>document.getElementsByName("vehicleType")[0].children[0]).value, daily = 5, monthly = 100, yearly = 500;
+    let vtype =Vehicles.prototype.getVehicleType(), daily = 5, monthly = 100, yearly = 500;
 
-    if (v == "Motocycle") {
+    if (vtype == "Motocycle") {
         daily = 10;
         monthly = 200;
         yearly = 1000;
-    } else if (v == "Car") {
+    } else if (vtype == "Car") {
         daily = 20;
         monthly = 500;
         yearly = 3500;
