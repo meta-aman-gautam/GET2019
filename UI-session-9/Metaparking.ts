@@ -1,26 +1,21 @@
 var currentForm, currentField;
 
-
-
-
 /* event listener for enter key */
-window.addEventListener("keypress" ,function (e) {
+window.addEventListener("keypress", function (e) {
     if (e.keyCode == 13) {
         onBlur();
     }
 }, false);
 
-
-
-class Employee{
+class Employee {
     private employeeName
-    private employeeContact 
-    private  employeePassword
+    private employeeContact
+    private employeePassword
     private employeeGender
     private employeeEmail
 
-    constructor(eName :string,eContact:string ,ePassword:String ,eGender :string,eEmail:string){
-        this.employeeName = eName ;
+    constructor(eName: string, eContact: string, ePassword: String, eGender: string, eEmail: string) {
+        this.employeeName = eName;
         this.employeeContact = eContact;
         this.employeePassword = ePassword;
         this.employeeGender = eGender;
@@ -28,127 +23,124 @@ class Employee{
     }
 
     getEmployeeName() {
-        return this.employeeName ;
+        return this.employeeName;
     }
 
     getEmployeeContact() {
-        return this.employeeContact ;
+        return this.employeeContact;
     }
 
     getEmployeePassword() {
-        return this.employeePassword ;
+        return this.employeePassword;
     }
     getEmployeeGender() {
-        return this.employeeGender ;
+        return this.employeeGender;
     }
     getEmployeeEmail() {
-        return this.employeeEmail  ;
+        return this.employeeEmail;
     }
 
-    setEmployeeName(eName:string) {
-        this.employeeName = eName ;
+    setEmployeeName(eName) {
+        this.employeeName = eName;
     }
 
     setEmployeeContact(eContact) {
-        this.employeeContact = eContact ;
+        this.employeeContact = eContact;
     }
 
     setEmployeePassword(ePassword) {
-        this.employeePassword = ePassword ;
+        this.employeePassword = ePassword;
     }
     setEmployeeGender(eGender) {
-        this.employeeGender = eGender ;
+        this.employeeGender = eGender;
     }
     setEmployeeEmail(eEmail) {
-        this.employeeEmail = eEmail ;
+        this.employeeEmail = eEmail;
     }
 }
 
 
+class Vehicles {
+    private vehicleName: String
+    private vehicleType: String
+    private vehicleNo: String
+    private vehicleDescription: BigInteger
 
-class Vehicles{
-    private vehicleName :String
-    private vehicleType :String
-    private vehicleNo : String
-    private  vehicleDescription: BigInteger
-    
 
-    constructor(vName ,vType ,vDescription ,vNumber){
-        this.vehicleName = vName ;
+    constructor(vName, vType, vDescription, vNumber) {
+        this.vehicleName = vName;
         this.vehicleType = vType;
         this.vehicleDescription = vDescription;
         this.vehicleNo = vNumber;
-     
+
     }
 
     setVehicleName(vName) {
-        this.vehicleName = vName ;
+        this.vehicleName = vName;
     }
 
     setVehicleType(vType) {
-        this.vehicleType = vType ;
+        this.vehicleType = vType;
     }
 
     setVehicleDescription(vDescription) {
-        this.vehicleDescription = vDescription ;
+        this.vehicleDescription = vDescription;
     }
     setVehicleNumber(vNumber) {
-        this.vehicleNo = vNumber ;
+        this.vehicleNo = vNumber;
     }
 
 
     getVehicleName() {
-        return this.vehicleName  ;
+        return this.vehicleName;
     }
 
     getVehicleType() {
-        return this.vehicleType  ;
+        return this.vehicleType;
     }
 
     getVehicleDescription() {
-        return this.vehicleDescription ;
+        return this.vehicleDescription;
     }
     getVehicleNumber() {
-        return this.vehicleNo ;
+        return this.vehicleNo;
     }
-    
 }
 
+class Plan {
+    private currency: String
+    private passType: String
+    private passPlan: String
 
-class Plan{
-    private currency :String
-    private passType :String
-    private passPlan : String
-
-    constructor(curr ,pType ,pPlan){
-        this.currency = curr ;
+    constructor(curr, pType, pPlan) {
+        this.currency = curr;
         this.passType = pType;
         this.passPlan = pPlan;
     }
 
     setCurrency(curr) {
-        this.currency = curr ;
+        this.currency = curr;
     }
 
     setPlanType(pType) {
-        this.passType = pType ;
+        this.passType = pType;
     }
 
     setPassPlan(pPlan) {
-        this.passPlan = pPlan ;
+        this.passPlan = pPlan;
     }
 
     getCurrency() {
-        return this.currency ;
+        return this.currency;
     }
 
     getPlanType() {
-        return  this.passType ;
+        return this.passType;
     }
 
     getPassPlan() {
-        return this.passPlan ;
-    }   
+        return this.passPlan;
+    }
 }
 
 
@@ -190,12 +182,12 @@ function vehicleForm() {
 
     document.body.style.backgroundColor = "#FF851B";
     let vehicleName = (<HTMLInputElement>document.getElementById("vname")).value;
- 
+
     document.getElementById("u_Registration").style.display = "none";
     document.getElementById("v_Registration").style.display = "block";
 
     (<HTMLInputElement>document.getElementById('label')).innerHTML = "may I know the name of your vehicle";
-    document.getElementById("vehName").style.display = "block"; 
+    document.getElementById("vehName").style.display = "block";
 
 }
 
@@ -224,11 +216,11 @@ function submitForm() {
     let moneypass = '';
     document.getElementById("p_Registration").style.display = "none";
     document.getElementsByName("passtype").forEach(function (item) { if ((<HTMLInputElement>item).checked) { moneypass = (<HTMLInputElement>item.nextElementSibling).innerText } });
-    Plan.prototype.setPassPlan(moneypass);   
-    document.getElementsByName("passtype").forEach(function(item){if(item.checked){Plan.prototype.setPlanType(item.value)}});
-    
+    Plan.prototype.setPassPlan(moneypass);
+    document.getElementsByName("passtype").forEach(function (item) { if (item.checked) { Plan.prototype.setPlanType(item.value) } });
+
     moneypass = moneypass + " " + Plan.prototype.getCurrency();
-    (<HTMLInputElement>document.getElementById('label')).innerHTML= "Thank you for registering " + Employee.prototype.getEmployeeName() + " Kindly Pay:" + moneypass;
+    (<HTMLInputElement>document.getElementById('label')).innerHTML = "Thank you for registering " + Employee.prototype.getEmployeeName() + " Kindly Pay:" + moneypass;
 
 
     document.getElementById("plans").style.display = "none";
@@ -280,9 +272,9 @@ function onBlur() {
                 return false;
             } else {
                 document.getElementById("error").innerHTML = " ";
-               
+
             }
-            
+
             label.innerHTML = "Hi " + Employee.prototype.getEmployeeName() + " may I know your gender?";
 
             document.getElementById("empName").style.display = "none";
@@ -299,23 +291,20 @@ function onBlur() {
                 document.getElementById("error").innerHTML = "Please select gender";
                 return false;
             } else {
-                let gender ;
-                document.getElementsByName('egender').forEach(function(item){if(item.checked){gender= item ; Employee.prototype.setEmployeeGender(gender.value);}})
-                
-
+                let gender;
+                document.getElementsByName('egender').forEach(function (item) { if (item.checked) { gender = item; Employee.prototype.setEmployeeGender(gender.value); } })
                 Employee.prototype.setEmployeeGender(gender.value);
                 document.getElementById("error").innerHTML = "";
             }
 
             document.getElementById('label').innerHTML = " You must be having a email Id";
-
             document.getElementById("empGender").style.display = "none";
             document.getElementById("empEmail").style.display = "block";
             currentField = "email";
             break;
 
         case "email":
-          
+
             let employeeEmail = (<HTMLInputElement>document.getElementById("eemail")).value;
             if (!(/^[A-z]+@[A-z]+\.[A-z]+$/.test(employeeEmail))) {
                 document.getElementById("error").innerHTML = "please enter valid email address";
@@ -325,7 +314,6 @@ function onBlur() {
                 Employee.prototype.setEmployeeEmail(employeeEmail);
             }
 
-            
             document.getElementById('label').innerHTML = "Please choose a password";
             document.getElementById("empEmail").style.display = "none";
             document.getElementById("empPass").style.display = "block";
@@ -336,7 +324,7 @@ function onBlur() {
 
         case "password":
             let employeePassword = (<HTMLInputElement>document.getElementById("epass")).value;
-            
+
             if (!(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/.test(employeePassword))) {
                 document.getElementById("error").innerHTML = "password should contains Uppercase, Lowercase,Special character,Numeric and min 8 characters";
                 return false;
@@ -363,14 +351,12 @@ function onBlur() {
             currentField = "contact";
     }
 
-
 }
 
 
 /* switch case for vehicle  form for switching input fields */
 function onBlurForm2() {
 
-    
     switch (currentField) {
 
         case "vehName":
@@ -379,11 +365,11 @@ function onBlurForm2() {
                 document.getElementById("error").innerHTML = "required";
                 return;
             }
-            else{
+            else {
                 document.getElementById("error").innerHTML = " ";
                 Vehicles.prototype.setVehicleName(vehicleName);
             }
-            
+
             document.getElementById("vehName").style.display = "none";
             (<HTMLInputElement>document.getElementById('label')).innerHTML = " whats the type of " + vehicleName;
             document.getElementById("vehType").style.display = "block";
@@ -411,7 +397,7 @@ function onBlurForm2() {
 
         case "vehNumber":
             let vehNumber = (<HTMLInputElement>document.getElementById("vnumber")).value;
-          
+
             if (vehNumber == "") {
                 document.getElementById("error").innerHTML = "required";
                 return;
@@ -425,10 +411,7 @@ function onBlurForm2() {
             currentField = "vehDescription";
 
     }
-
-
 }
-
 
 /* switch case for plan and pricing  form for switching input fields */
 function onBlurForm3() {
@@ -437,7 +420,7 @@ function onBlurForm3() {
 
         case "currency":
             let currency = (<HTMLInputElement>document.getElementById("currency")).value;
-            let vehicleType =  Vehicles.prototype.getVehicleType();
+            let vehicleType = Vehicles.prototype.getVehicleType();
             document.getElementById("currType").style.display = "none";
             Plan.prototype.setCurrency(currency);
             (<HTMLInputElement>document.getElementById("label")).innerHTML = "choose plan for your " + vehicleType;
@@ -456,12 +439,10 @@ function onBlurForm3() {
 function showPrice() {
 
     let curr = (<HTMLInputElement>document.getElementById("currency")).value;
-    
     let plan = (<HTMLInputElement>document.getElementById("plans")).value;
-    
 
     document.getElementById('plans').style.display = "block";
-    let vtype =Vehicles.prototype.getVehicleType(), daily = 5, monthly = 100, yearly = 500;
+    let vtype = Vehicles.prototype.getVehicleType(), daily = 5, monthly = 100, yearly = 500;
 
     if (vtype == "Motocycle") {
         daily = 10;

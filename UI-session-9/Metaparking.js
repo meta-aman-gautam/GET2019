@@ -45,6 +45,7 @@ var Employee = /** @class */ (function () {
     };
     return Employee;
 }());
+
 var Vehicles = /** @class */ (function () {
     function Vehicles(vName, vType, vDescription, vNumber) {
         this.vehicleName = vName;
@@ -157,13 +158,17 @@ function planForm() {
 function submitForm() {
     var moneypass = '';
     document.getElementById("p_Registration").style.display = "none";
-    document.getElementsByName("passtype").forEach(function (item) { if (item.checked) {
-        moneypass = item.nextElementSibling.innerText;
-    } });
+    document.getElementsByName("passtype").forEach(function (item) {
+        if (item.checked) {
+            moneypass = item.nextElementSibling.innerText;
+        }
+    });
     Plan.prototype.setPassPlan(moneypass);
-    document.getElementsByName("passtype").forEach(function (item) { if (item.checked) {
-        Plan.prototype.setPlanType(item.value);
-    } });
+    document.getElementsByName("passtype").forEach(function (item) {
+        if (item.checked) {
+            Plan.prototype.setPlanType(item.value);
+        }
+    });
     moneypass = moneypass + " " + Plan.prototype.getCurrency();
     document.getElementById('label').innerHTML = "Thank you for registering " + Employee.prototype.getEmployeeName() + " Kindly Pay:" + moneypass;
     document.getElementById("plans").style.display = "none";
@@ -223,10 +228,12 @@ function onBlur() {
             }
             else {
                 var gender_1;
-                document.getElementsByName('egender').forEach(function (item) { if (item.checked) {
-                    gender_1 = item;
-                    Employee.prototype.setEmployeeGender(gender_1.value);
-                } });
+                document.getElementsByName('egender').forEach(function (item) {
+                    if (item.checked) {
+                        gender_1 = item;
+                        Employee.prototype.setEmployeeGender(gender_1.value);
+                    }
+                });
                 Employee.prototype.setEmployeeGender(gender_1.value);
                 document.getElementById("error").innerHTML = "";
             }
