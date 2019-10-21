@@ -1,0 +1,65 @@
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
+<!-- * * * * * * * to get started with your project! * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
+
+
+<!-- Toolbar -->
+<div class="toolbar" role="banner">
+
+  <span class="content">Task Management Application</span>
+
+</div>
+
+<div class="content" role="main">
+
+<!-- Highlight Card -->
+  <div class="spacer">
+
+      <span>
+          <a href="#">My Task Tracker</a>
+      </span>
+
+    <span id="spacebetween"></span>
+
+    <span>
+      <input type="button" class="button"value="Edit Task">
+    </span>
+
+  </div>
+
+
+
+
+  <input type="hidden" #selection>
+
+  <div class="card-container">
+    <div class="card card-small" (click)="selection.value = 'component'" tabindex="0">
+      <span id="New">
+        <com></com>
+      </span>
+      <app-new-task></app-new-task>
+    </div>
+
+    <div class="card card-small" (click)="selection.value = 'material'" tabindex="0">
+      <span id="In Progress">In Prog,dfjdlfress</span>
+      <div class ="in-prgress-task"></div>
+    </div>
+
+    <div class="card card-small" (click)="selection.value = 'dependency'" tabindex="0">
+      <span id="Completed">Completed</span>
+      <div class="completed"></div>
+    </div>
+
+  
+  </div>
+
+  
+
+
+<router-outlet></router-outlet>
