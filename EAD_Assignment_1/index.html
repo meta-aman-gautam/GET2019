@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="myfunction.js">
+    </script>
+    <style>
+
+.collapsible {
+
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  text-align: center;
+  font-size: 15px;
+}
+.vehicledetailsCSS {
+    display: none;
+}
+
+.active, .collapsible:hover {
+  background-color: rgb(243, 235, 235);
+}
+
+.content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: #fcf5f5;
+}
+    </style>
+</head>
+<body>
+   
+    <button class="collapsible" onclick="collapse()" > Registration Form </button>
+  
+    <div class="content" id="register" align="center" >
+        <form  name = "registration" action="" method="POST" >
+            <table align="center" border="1px" cellpadding = "25px">
+                    <th><h1>Parking Registration Form</h1>
+                        <h5> Metacube Welcomes You !</h5>
+                    </th>
+                    <tr >
+                        <td >
+                        
+                        <input type="text" placeholder="Full Name" name ="name" id= "name" size="50%" >
+                        <span id = "fullName"></span><br><br>
+                        <span id="radio" >
+                            <label >
+                                <label><input type="radio" name= "gender" value="Male">Male</label>
+                                <label><input type="radio" name= "gender" value="Female">Female</label>
+                                <label><input type="radio" name = "gender" value="Other">Other</label>
+                            </label>
+                        </span><br><br>
+                            <input type="text" placeholder="Email Address" name="email" size="50%" ></label>
+                        <span id="email"></span><br><br>
+                        
+                            <input type="password"placeholder="Password" name="psswd" size="50%" >
+                        <span id="psswd"></span><br><br>
+
+                        
+                        <input type="password" placeholder="Confirm Password" name ="confirmPsswd" size="50%">
+                        <span id="confirmPsswd"></span><br><br>
+
+                        <input type="tel" placeholder="Mobile No." name="mobile" size="50%" >
+                        <span id="mobile"></span><br><br>
+                        <input type="button" value="Register" onclick="checkForms()"><br><br>
+                        </td>
+                    </tr>
+            </table>
+        </form>
+    </div>
+ 
+    <button class="collapsible vehicledetailsCSS" id="vehicledetails" onclick="collapse()">Vehicle Details</button>
+       
+    <div class ="content"  id="vehicledetails" align="center">
+            <form action="" method="POST">
+                <table  border="1px" cellpadding = "25px">
+                    <th>
+                        <ul> <h1> Vehicle Details </h1></ul>
+                    </th>
+                    <tr>
+                        <td >
+                            <input type="text" placeholder="Name" name="name" size="50%"><br><br>
+                            <select name="Vehicle Type" id ="type" >
+                                <option>-- choose vehicle type --</option>
+                                <option id ="bicycle" >BICYCLE</option>
+                                <option id ="car" >CAR</option>
+                                <option id ="motorcycle" >MOTOR CYCLE</option>
+                            </select><br><br>
+                            <input type="text" placeholder="Vehicle No." id="vehicleno" size="50%"><br><br>
+                            <input type="text" placeholder="Employee Registration Id" id ="employeeid" readonly size="50%"><br><br>
+                            <textarea name="identification" placeholder="Identification" cols="51.5" rows="5" style="max-block-size: 4ch" ></textarea><br><br>     
+                            <input type = "button" value = "Submit" onclick = "vehicleDetails()"  ><br><br>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+
+        
+        <button class="collapsible" onclick="collapse()" >Plans </button>
+        <div class ="content"  id="plans" align="center" > 
+            <br><br><br>
+            <div id ="currencydiv">
+            <select id="currency" onchange ="vehicleDetails()">
+                <option>
+                    INR
+                </option>
+                <option>
+                    USD
+                </option>
+                <option>
+                    YEN
+                </option>
+            </select><br><br><br>
+            <button >
+                DAILY
+                <h1>
+                <div id ="DAILY"  onclick="showPass('DAILY')">
+                </div>
+                </h1>
+            </button>   
+            <button >
+                MONTHLY
+                <h1>
+                <div id="MONTHLY" onclick="showPass('MONTHLY')" >
+                </div>
+                </h1>
+            </button>   
+            <button >
+                YEARLY
+                <h1><div id="YEARLY" onclick="showPass('YEARLY')">
+                </div>
+                </h1>
+            </button>
+            </div>
+        </div>
+
+</body>
+</html>
